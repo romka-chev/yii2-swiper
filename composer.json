@@ -8,5 +8,10 @@
       "name": "Kulikov Roman",
       "email": "flinnraider@yandex.ru"
     }
-  ]
+  ],
+  "require": {
+    "fxp/composer-asset-plugin": "dev-master",
+    "yiisoft/yii2": "2.0.3",
+    "bower-asset/swiper": ">=v3.0.7"
+  }
 }
