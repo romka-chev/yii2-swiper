@@ -1,0 +1,12 @@
+{
+  "name": "RomkaChev/yii2-swiper",
+  "description": "this is yii2 widget for swiper slider",
+  "minimum-stability": "dev",
+  "license": "Apache License",
+  "authors": [
+    {
+      "name": "Kulikov Roman",
+      "email": "flinnraider@yandex.ru"
+    }
+  ]
+}
