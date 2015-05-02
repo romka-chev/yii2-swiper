@@ -1,25 +1,25 @@
 <?php
-namespace romkaChev\yii2\swiper;
+namespace romkaChev\yii2\swiper\assets;
 
 use yii\web\AssetBundle;
 
 /**
  * Class SwiperAsset
  *
- * @package romkaChev\yii2\swiper
+ * @package romkaChev\yii2\swiper\assets
  */
 class SwiperAsset extends AssetBundle
 {
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/swiper';
+    public $sourcePath = '@bower/swiper/dist';
 
     /**
      * @inheritdoc
      */
     public $js = [
-        'js/swiper.jquery.js',
+        'js/swiper.js'
     ];
 
     /**
@@ -29,10 +29,4 @@ class SwiperAsset extends AssetBundle
         'css/swiper.css',
     ];
 
-    /**
-     * @inheritdoc
-     */
-    public $depends = [
-        'yii\web\JqueryAsset',
-    ];
 }

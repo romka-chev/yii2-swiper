@@ -9,9 +9,16 @@
       "email": "flinnraider@yandex.ru"
     }
   ],
+  "minimum-stability": "dev",
   "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*",
     "fxp/composer-asset-plugin": "dev-master",
-    "yiisoft/yii2": "2.0.3",
     "bower-asset/swiper": ">=v3.0.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "romkaChev\\yii2\\swiper": ""
+    }
   }
 }

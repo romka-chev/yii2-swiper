@@ -13,8 +13,9 @@ use yii\base\Object;
 class Slide extends Object
 {
     public $content;
-
-    public $options;
+    public $background;
+    public $hash;
+    public $options = [ ];
 
     /**
      * @param string|mixed[] $config
@@ -25,8 +26,25 @@ class Slide extends Object
             $config = [ 'content' => $config ];
         }
 
-        if (is_array( $config["content"] )) {
+        if (isset( $config['content'] ) && is_array( $config["content"] )) {
             $config["content"] = implode( '', $config["content"] );
+        }
+
+        ! isset( $config['options'] ) && $config['options'] = [ ];
+        ! isset( $config['options']['style'] ) && $config['options']['style'] = '';
+
+
+        if (isset( $config['background'] ) && is_string( $config['background'] )) {
+            $config['options']['style'] = implode( ';', array_merge( [ $config['options']['style'] ], [ "background-image:url({$config['background']})" ] ) );
+            $config['options']['style'] = str_replace( ';;', ';', $config['options']['style'] );
+            $config['options']['style'] = trim( $config['options']['style'], ';' );
+        }
+        if ( ! $config['options']['style']) {
+            unset( $config['options']['style'] );
+        }
+
+        if (isset( $config["hash"] ) && ! empty( $config["hash"] )) {
+            $config["options"]["data"]["hash"] = $config["hash"];
         }
 
         parent::__construct( $config );
