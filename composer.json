@@ -13,12 +13,19 @@
   "require": {
     "php": ">=5.4.0",
     "yiisoft/yii2": "*",
+    "yiisoft/yii2-bootstrap": "*",
     "fxp/composer-asset-plugin": "dev-master",
     "bower-asset/swiper": ">=v3.0.7"
   },
   "autoload": {
     "psr-4": {
-      "romkaChev\\yii2\\swiper": ""
+      "romkaChev\\yii2\\swiper\\": ""
+    }
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
     }
   }
 }

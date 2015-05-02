@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Роман
- * Date: 02.05.2015
- * Time: 21:38
- */
-
 namespace romkaChev\yii2\swiper\assets;
 
 
