@@ -1,11 +1,28 @@
 # Yii2-swiper ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-green.svg?style=flat) ![License Apache 2.0](https://img.shields.io/badge/license-Apache%202-blue.svg?style=flat)
 
-The yii2 widget to the Swiper slider. You can find examples in [demos](https://github.com/RomkaChev/yii2-swiper/tree/master/demos) folder
+Yii2 extension for Swiper slider. See more here: [https://github.com/nolimits4web/Swiper/](https://github.com/nolimits4web/Swiper).
 
-###Installation Composer
-    RomkaChev/yii2-swiper:"*"
+You can find examples in [demos](https://github.com/RomkaChev/yii2-swiper/tree/master/demos) folder
+
+## Installation
+ 
+You can get this extension through [Composer](https://getcomposer.org/download/).
+ 
+Either run in terminal
+ 
+```Shell
+$ php composer.phar require "RomkaChev/yii2-swiper" "*"
+```
+ 
+or add
+ 
+```JSON
+"RomkaChev/yii2-swiper" : "*"
+```
+ 
+to the *require* section of your application's ```composer.json``` file.
     
-###Using
+###Usage
 
 ~~~
 
@@ -41,3 +58,9 @@ The yii2 widget to the Swiper slider. You can find examples in [demos](https://g
     ] );
     
 ~~~
+
+## Issues
+
+If some problems occurred, you can create [issue](https://github.com/RomkaChev/yii2-swiper/issues).
+
+Thank you for attention.
