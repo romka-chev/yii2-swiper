@@ -17,64 +17,12 @@ echo Swiper::widget( [
         'Slide 9',
         'Slide 10',
     ],
+    'behaviours' => [
+        Swiper::BEHAVIOUR_PAGINATION
+    ],
     'pluginOptions' => [
-        Swiper::OPTION_PAGINATION           => true,
         Swiper::OPTION_PAGINATION_CLICKABLE => true,
         Swiper::OPTION_SPACE_BETWEEN        => 30,
         Swiper::OPTION_SLIDES_PER_VIEW      => Swiper::SLIDES_PER_VIEW_AUTO
     ]
 ] );
-$this->registerCss( <<<CSS
-html, body {
-    position : relative;
-    height   : 100%;
-}
-
-body {
-    background  : #eee;
-    font-family : Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size   : 14px;
-    color       : #000;
-    margin      : 0;
-    padding     : 0;
-}
-
-/*noinspection CssUnusedSymbol*/
-.swiper-container {
-    width  : 100%;
-    height : 100%;
-}
-
-/*noinspection CssUnusedSymbol*/
-.swiper-slide {
-    text-align              : center;
-    font-size               : 18px;
-    background              : #fff;
-    width                   : 80%;
-
-    /* Center slide text vertically */
-    display                 : -webkit-box;
-    display                 : -ms-flexbox;
-    display                 : -webkit-flex;
-    display                 : flex;
-    -webkit-box-pack        : center;
-    -ms-flex-pack           : center;
-    -webkit-justify-content : center;
-    justify-content         : center;
-    -webkit-box-align       : center;
-    -ms-flex-align          : center;
-    -webkit-align-items     : center;
-    align-items             : center;
-}
-
-/*noinspection CssUnusedSymbol*/
-.swiper-slide:nth-child(2n) {
-    width : 60%;
-}
-
-/*noinspection CssUnusedSymbol*/
-.swiper-slide:nth-child(3n) {
-    width : 40%;
-}
-CSS
-);

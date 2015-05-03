@@ -56,3 +56,6 @@ vendor/
 # composer.lock
 
 
+
+phpunit.phar
+composer.lock

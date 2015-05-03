@@ -377,7 +377,7 @@ class Swiper extends Widget
      */
     protected function renderParallax()
     {
-        if (in_array( self::BEHAVIOUR_PARALLAX, $this->availableBehaviours )) {
+        if (in_array( self::BEHAVIOUR_PARALLAX, $this->behaviours )) {
             $parallaxOptions = $this->parallaxOptions;
             $parallaxTag     = ArrayHelper::remove( $parallaxOptions, 'tag', 'div' );
 

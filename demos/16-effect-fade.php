@@ -25,31 +25,3 @@ echo Swiper::widget( [
         Swiper::OPTION_EFFECT        => Swiper::EFFECT_FADE
     ]
 ] );
-$this->registerCss( <<<CSS
-html, body {
-    position : relative;
-    height   : 100%;
-}
-
-body {
-    background  : #eee;
-    font-family : Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size   : 14px;
-    color       : #000;
-    margin      : 0;
-    padding     : 0;
-}
-
-/*noinspection CssUnusedSymbol*/
-.swiper-container {
-    width  : 100%;
-    height : 100%;
-}
-
-/*noinspection CssUnusedSymbol*/
-.swiper-slide {
-    background-position : center;
-    background-size     : cover;
-}
-CSS
-);
