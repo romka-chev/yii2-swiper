@@ -2,7 +2,7 @@
 
 Yii2 extension for Swiper slider. See more here: [https://github.com/nolimits4web/Swiper/](https://github.com/nolimits4web/Swiper).
 
-You can find examples in [demos](https://github.com/RomkaChev/yii2-swiper/tree/master/demos) folder
+You can find examples in [demos](https://github.com/romka-chev/yii2-swiper/tree/master/demos) folder
 
 ## Installation
  
@@ -11,13 +11,13 @@ You can get this extension through [Composer](https://getcomposer.org/download/)
 Either run in terminal
  
 ```Shell
-$ php composer.phar require "RomkaChev/yii2-swiper" "*"
+$ php composer.phar require "romka-chev/yii2-swiper" "*"
 ```
  
 or add
  
 ```JSON
-"RomkaChev/yii2-swiper" : "*"
+"romka-chev/yii2-swiper" : "*"
 ```
  
 to the *require* section of your application's ```composer.json``` file.
@@ -67,6 +67,6 @@ echo Swiper::widget( [
 
 ## Issues
 
-If some problems occurred, you can create [issue](https://github.com/RomkaChev/yii2-swiper/issues).
+If some problems occurred, you can create [issue](https://github.com/romka-chev/yii2-swiper/issues).
 
 Thank you for attention.
