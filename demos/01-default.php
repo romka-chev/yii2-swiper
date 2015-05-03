@@ -5,7 +5,7 @@
 use romkaChev\yii2\swiper\Swiper;
 
 echo Swiper::widget( [
-    'items' => [
+    'items'       => [
         'Slide 1',
         'Slide 2',
         'Slide 3',
@@ -16,5 +16,9 @@ echo Swiper::widget( [
         'Slide 8',
         'Slide 9',
         'Slide 10',
+    ],
+    'itemOptions' => [
+        'tag'   => 'div',
+        'class' => 'my-slide-class'
     ]
 ] );

@@ -43,8 +43,10 @@ echo Swiper::widget( [
                     Swiper::BEHAVIOUR_PARALLAX,
                 ],
                 'parallaxOptions' => [
-                    Swiper::PARALLAX_BACKGROUND => 'http://lorempixel.com/1920/1080/nature/1/',
-                    Swiper::PARALLAX_TRANSITION => '-23%',
+                    Swiper::PARALLAX_BACKGROUND   => 'http://lorempixel.com/1920/1080/nature/1/',
+                    Swiper::PARALLAX_TRANSITION_X => '-23%',
+                    Swiper::PARALLAX_DURATION     => 500,
+                    'class'                       => 'my-parallax-class'
                 ],
                 'pluginOptions'   => [
                     Swiper::OPTION_HASHNAV          => true,
@@ -87,8 +89,9 @@ echo Swiper::widget( [
                     Swiper::BEHAVIOUR_RTL
                 ],
                 'parallaxOptions'   => [
-                    Swiper::PARALLAX_BACKGROUND => 'http://lorempixel.com/1920/1080/nature/2/',
-                    Swiper::PARALLAX_TRANSITION => '-23%'
+                    Swiper::PARALLAX_BACKGROUND   => 'http://lorempixel.com/1920/1080/nature/2/',
+                    Swiper::PARALLAX_TRANSITION_Y => '-23%',
+                    Swiper::PARALLAX_DURATION     => 450
                 ],
                 'paginationOptions' => [
                     'class' => 'swiper-pagination-white'
@@ -132,8 +135,9 @@ echo Swiper::widget( [
                     Swiper::BEHAVIOUR_PARALLAX,
                 ],
                 'parallaxOptions'   => [
-                    Swiper::PARALLAX_BACKGROUND   => 'http://lorempixel.com/1920/1080/nature/3/',
-                    Swiper::PARALLAX_TRANSITION_Y => '-23%'
+                    Swiper::PARALLAX_BACKGROUND => 'http://lorempixel.com/1920/1080/nature/3/',
+                    Swiper::PARALLAX_TRANSITION => '-23%',
+                    Swiper::PARALLAX_DURATION   => 350
                 ],
                 'paginationOptions' => [
                     'class' => 'swiper-pagination-white'
@@ -157,6 +161,9 @@ echo Swiper::widget( [
     ],
     'paginationOptions' => [
         'class' => 'swiper-pagination-white'
+    ],
+    'wrapperOptions'    => [
+        'class' => 'my-wrapper-class'
     ],
     'pluginOptions'     => [
         Swiper::OPTION_LOOP                   => true,

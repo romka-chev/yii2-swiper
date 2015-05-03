@@ -5,7 +5,7 @@
 use romkaChev\yii2\swiper\Swiper;
 
 echo Swiper::widget( [
-    'items'         => [
+    'items'            => [
         'Slide 1',
         'Slide 2',
         'Slide 3',
@@ -17,10 +17,13 @@ echo Swiper::widget( [
         'Slide 9',
         'Slide 10',
     ],
-    'behaviours' => [
+    'behaviours'       => [
         Swiper::BEHAVIOUR_SCROLLBAR
     ],
-    'pluginOptions' => [
+    'scrollbarOptions' => [
+        'class' => 'my-custom-scrollbar-class'
+    ],
+    'pluginOptions'    => [
         Swiper::OPTION_SCROLLBAR_HIDE       => true,
         Swiper::OPTION_SLIDES_PER_VIEW      => Swiper::SLIDES_PER_VIEW_AUTO,
         Swiper::OPTION_CENTERED_SLIDES      => true,

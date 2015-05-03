@@ -60,3 +60,4 @@ vendor/
 phpunit.phar
 composer.lock
 frontend
+coverage
