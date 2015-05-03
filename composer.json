@@ -1,6 +1,14 @@
 {
   "name": "RomkaChev/yii2-swiper",
-  "description": "this is yii2 widget for swiper slider",
+  "description": "Yii2 extension for Swiper slider",
+  "keywords": [
+    "yii",
+    "yii2",
+    "extension",
+    "widget",
+    "swiper",
+    "slider"
+  ],
   "license": "Apache License",
   "authors": [
     {
