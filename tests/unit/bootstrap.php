@@ -9,13 +9,7 @@ $_SERVER['SCRIPT_FILENAME'] = __FILE__;
 require_once( __DIR__ . '/../../vendor/yiisoft/yii2/Yii.php' );
 require_once( __DIR__ . '/../../vendor/autoload.php' );
 
-//require_once(__DIR__ . '/../../assets/SwiperAsset.php');
-//require_once(__DIR__ . '/../../assets/SwiperJqueryAsset.php');
-//require_once(__DIR__ . '/../../assets/SwiperJqueryMinAsset.php');
-//require_once(__DIR__ . '/../../assets/SwiperMinAsset.php');
-//require_once(__DIR__ . '/../../Swiper.php');
-//require_once(__DIR__ . '/../../Slide.php');
-
 Yii::setAlias( '@yiiunit', __DIR__ );
+Yii::setAlias( '@demos', __DIR__ . '/../../demos' );
 
 require_once( __DIR__ . '/BaseTestCase.php' );

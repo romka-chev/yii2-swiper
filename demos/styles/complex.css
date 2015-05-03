@@ -1,0 +1,86 @@
+html, body {
+    position : relative;
+    height   : 100%;
+}
+
+body {
+    background  : #eee;
+    font-family : Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size   : 14px;
+    color       : #000;
+    margin      : 0;
+    padding     : 0;
+}
+
+/*noinspection CssUnusedSymbol*/
+.parallax-bg {
+    position                : absolute;
+    left                    : 0;
+    top                     : 0;
+    width                   : 130%;
+    height                  : 100%;
+    -webkit-background-size : cover;
+    background-size         : cover;
+    background-position     : center;
+}
+
+/*noinspection CssUnusedSymbol*/
+.swiper-slide .title {
+    font-size   : 41px;
+    font-weight : 300;
+}
+
+/*noinspection CssUnusedSymbol*/
+.swiper-slide .subtitle {
+    font-size : 21px;
+}
+
+/*noinspection CssUnusedSymbol*/
+.swiper-slide .text {
+    font-size   : 14px;
+    max-width   : 400px;
+    line-height : 1.3;
+}
+
+/*noinspection CssUnusedSymbol*/
+.swiper-container {
+    width        : 100%;
+    height       : 100%;
+    margin-left  : auto;
+    margin-right : auto;
+    background   : #000;
+}
+
+/*noinspection CssUnusedSymbol*/
+.swiper-slide {
+    background-size     : cover;
+    background-position : center;
+    color               : #FFFFFF;
+}
+
+/*noinspection CssUnusedSymbol*/
+.gallery-top {
+    height : 80%;
+    width  : 100%;
+}
+
+/*noinspection CssUnusedSymbol*/
+.gallery-thumbs {
+    height     : 20%;
+    box-sizing : border-box;
+    padding    : 10px 0;
+}
+
+/*noinspection CssUnusedSymbol*/
+.gallery-thumbs .swiper-slide {
+    width   : 25%;
+    height  : 100%;
+    opacity : 0.4;
+}
+
+/*noinspection CssUnusedSymbol*/
+.gallery-thumbs .swiper-slide-active {
+    opacity : 1;
+}
+
+

@@ -1,7 +1,6 @@
 {
   "name": "RomkaChev/yii2-swiper",
   "description": "this is yii2 widget for swiper slider",
-  "minimum-stability": "dev",
   "license": "Apache License",
   "authors": [
     {
@@ -9,13 +8,14 @@
       "email": "flinnraider@yandex.ru"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=5.4.0",
-    "yiisoft/yii2": "*",
-    "yiisoft/yii2-bootstrap": "*",
-    "fxp/composer-asset-plugin": "dev-master",
-    "bower-asset/swiper": ">=v3.0.7"
+    "fxp/composer-asset-plugin": ">=1.0.0",
+    "yiisoft/yii2": "2.0.*@dev",
+    "bower-asset/swiper": ">=v3.0.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.x-dev"
   },
   "autoload": {
     "psr-4": {

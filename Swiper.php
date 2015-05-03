@@ -163,6 +163,7 @@ class Swiper extends Widget
     const PARALLAX_TRANSITION_X = 'transitionX';
     const PARALLAX_TRANSITION_Y = 'transitionY';
     const PARALLAX_DURATION     = 'duration';
+
     /**
      * @var string[]
      */
@@ -228,14 +229,16 @@ class Swiper extends Widget
      */
     public function init()
     {
-        $this->normalizeBehaviours();
+        $this->checkBehaviours();
+
         $this->normalizeOptions();
+        $this->normalizeItems();
     }
 
     /**
      *
      */
-    protected function normalizeBehaviours()
+    protected function checkBehaviours()
     {
         foreach ($this->behaviours as $behaviour) {
             if ( ! in_array( $behaviour, $this->availableBehaviours )) {
@@ -251,9 +254,6 @@ class Swiper extends Widget
     {
         $generatedId = $this->getId();
 
-        if ( ! isset( $this->containerOptions['tag'] ) || empty( $this->containerOptions['tag'] )) {
-            $this->containerOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->containerOptions['id'] ) || empty( $this->containerOptions['id'] )) {
             $this->containerOptions['id'] = $generatedId;
         }
@@ -263,9 +263,6 @@ class Swiper extends Widget
             $this->containerOptions['class'] = implode( " ", [ 'swiper-container', $this->containerOptions['class'] ] );
         }
 
-        if ( ! isset( $this->wrapperOptions['tag'] ) || empty( $this->wrapperOptions['tag'] )) {
-            $this->wrapperOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->wrapperOptions['id'] ) || empty( $this->wrapperOptions['id'] )) {
             $this->wrapperOptions['id'] = "{$this->containerOptions['id']}-wrapper";
         }
@@ -275,9 +272,6 @@ class Swiper extends Widget
             $this->wrapperOptions['class'] = implode( " ", [ 'swiper-wrapper', $this->wrapperOptions['class'] ] );
         }
 
-        if ( ! isset( $this->paginationOptions['tag'] ) || empty( $this->paginationOptions['tag'] )) {
-            $this->paginationOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->paginationOptions['id'] ) || empty( $this->paginationOptions['id'] )) {
             $this->paginationOptions['id'] = "{$this->containerOptions['id']}-swiper-pagination";
         }
@@ -287,9 +281,6 @@ class Swiper extends Widget
             $this->paginationOptions['class'] = implode( " ", [ 'swiper-pagination', $this->paginationOptions['class'] ] );
         }
 
-        if ( ! isset( $this->scrollbarOptions['tag'] ) || empty( $this->scrollbarOptions['tag'] )) {
-            $this->scrollbarOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->scrollbarOptions['id'] ) || empty( $this->scrollbarOptions['id'] )) {
             $this->scrollbarOptions['id'] = "{$this->containerOptions['id']}-swiper-scrollbar";
         }
@@ -299,9 +290,6 @@ class Swiper extends Widget
             $this->scrollbarOptions['class'] = implode( " ", [ 'swiper-scrollbar', $this->scrollbarOptions['class'] ] );
         }
 
-        if ( ! isset( $this->nextButtonOptions['tag'] ) || empty( $this->nextButtonOptions['tag'] )) {
-            $this->nextButtonOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->nextButtonOptions['id'] ) || empty( $this->nextButtonOptions['id'] )) {
             $this->nextButtonOptions['id'] = "{$this->containerOptions['id']}-swiper-button-next";
         }
@@ -311,9 +299,6 @@ class Swiper extends Widget
             $this->nextButtonOptions['class'] = implode( " ", [ 'swiper-button-next', $this->nextButtonOptions['class'] ] );
         }
 
-        if ( ! isset( $this->prevButtonOptions['tag'] ) || empty( $this->prevButtonOptions['tag'] )) {
-            $this->prevButtonOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->prevButtonOptions['id'] ) || empty( $this->prevButtonOptions['id'] )) {
             $this->prevButtonOptions['id'] = "{$this->containerOptions['id']}-swiper-button-prev";
         }
@@ -323,10 +308,6 @@ class Swiper extends Widget
             $this->prevButtonOptions['class'] = implode( " ", [ 'swiper-button-prev', $this->prevButtonOptions['class'] ] );
         }
 
-
-        if ( ! isset( $this->parallaxOptions['tag'] ) || empty( $this->parallaxOptions['tag'] )) {
-            $this->parallaxOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->parallaxOptions['id'] ) || empty( $this->parallaxOptions['id'] )) {
             $this->parallaxOptions['id'] = "{$this->containerOptions['id']}-parallax";
         }
@@ -336,15 +317,39 @@ class Swiper extends Widget
             $this->parallaxOptions['class'] = implode( " ", [ 'parallax-bg', $this->parallaxOptions['class'] ] );
         }
 
-
-        if ( ! isset( $this->itemOptions['tag'] ) || empty( $this->itemOptions['tag'] )) {
-            $this->itemOptions['tag'] = 'div';
-        }
         if ( ! isset( $this->itemOptions['class'] ) || empty( $this->itemOptions['class'] )) {
             $this->itemOptions['class'] = 'swiper-slide';
         } else {
             $this->itemOptions['class'] = implode( " ", [ 'swiper-slide', $this->itemOptions['class'] ] );
         }
+    }
+
+    /**
+     *
+     */
+    protected function normalizeItems()
+    {
+        foreach ($this->items as $index => $item) {
+            if ( ! $item instanceof Slide) {
+                $this->items[$index] = new Slide( $item );
+            }
+        }
+    }
+
+    /**
+     * @param string|mixed[] $item
+     *
+     * @return Swiper
+     */
+    public function addItem( $item = [ ] )
+    {
+        if ( ! $item instanceof Slide) {
+            $this->items[] = new Slide( $item );
+        } else {
+            $this->items[] = $item;
+        }
+
+        return $this;
     }
 
     /**
@@ -415,34 +420,13 @@ class Swiper extends Widget
      */
     protected function renderWrapper()
     {
-        $normalizedItems = $this->normalizeItems( $this->items );
-        $renderedItems   = $this->renderItems( $normalizedItems );
+        $renderedItems = $this->renderItems( $this->items );
 
         $wrapperOptions  = $this->wrapperOptions;
         $wrapperTag      = ArrayHelper::remove( $wrapperOptions, 'tag', 'div' );
         $renderedWrapper = Html::tag( $wrapperTag, "\n        $renderedItems\n    ", $wrapperOptions );
 
         return "\n    $renderedWrapper\n";
-    }
-
-    /**
-     * @param mixed[] $items
-     *
-     * @return Slide[]
-     */
-    protected function normalizeItems( array $items )
-    {
-        $normalizedItems = [ ];
-
-        foreach ($items as $index => $item) {
-            if ($item instanceof Slide) {
-                $normalizedItems[] = $item;
-            } else {
-                $normalizedItems[] = new Slide( $item );
-            }
-        }
-
-        return $normalizedItems;
     }
 
     /**
@@ -467,7 +451,7 @@ class Swiper extends Widget
      */
     protected function renderItem( Slide $slide )
     {
-        $options = array_merge( $this->itemOptions, $slide->options );
+        $options = array_replace_recursive( $this->itemOptions, $slide->options );
         $tag     = ArrayHelper::remove( $options, 'tag', 'div' );
 
         return Html::tag( $tag, $slide->content, $options );
