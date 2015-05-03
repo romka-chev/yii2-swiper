@@ -4,7 +4,7 @@ namespace romkaChev\yii2\swiper\assets;
 use yii\web\AssetBundle;
 
 /**
- * Class SwiperAsset
+ * Class SwiperJqueryAsset
  *
  * @package romkaChev\yii2\swiper\assets
  */
