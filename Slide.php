@@ -2,6 +2,7 @@
 namespace romkaChev\yii2\swiper;
 
 use yii\base\Object;
+use yii\helpers\ArrayHelper;
 
 /**
  * Slide is representation of each slide for Swiper widget.
@@ -11,6 +12,20 @@ use yii\base\Object;
  */
 class Slide extends Object
 {
+
+    /**
+     * @see \romkaChev\yii2\swiper\Slide::$content
+     */
+    const CONTENT = 'content';
+    /**
+     * @see \romkaChev\yii2\swiper\Slide::$background
+     */
+    const BACKGROUND = 'background';
+    /**
+     * @see \romkaChev\yii2\swiper\Slide::$hash
+     */
+    const HASH = 'hash';
+
     /**
      * @var string content part, which will be applied in [[\yii\helpers\Html::tag()]].
      */
@@ -49,29 +64,27 @@ class Slide extends Object
     public function __construct( $config = [ ] )
     {
         if (is_string( $config )) {
-            $config = [ 'content' => $config ];
+            $config = [ self::CONTENT => $config ];
+        }
+        $config[self::CONTENT] = ArrayHelper::getValue( $config, self::CONTENT, '' );
+
+        if (is_array( $config[self::CONTENT] )) {
+            $config[self::CONTENT] = implode( '', $config[self::CONTENT] );
         }
 
-        if (isset( $config['content'] ) && is_array( $config["content"] )) {
-            $config["content"] = implode( '', $config["content"] );
+        $slideOptions = ArrayHelper::getValue( $config, 'options', [ ] );
+
+        if (ArrayHelper::getValue( $config, self::BACKGROUND )) {
+            $background            = ArrayHelper::getValue( $config, self::BACKGROUND );
+            $slideOptions['style'] = ArrayHelper::getValue( $slideOptions, 'style', '' ) . ";background-image:url({$background});";
+            $slideOptions['style'] = trim( $slideOptions['style'], ';' );
         }
 
-        ! isset( $config['options'] ) && $config['options'] = [ ];
-        ! isset( $config['options']['style'] ) && $config['options']['style'] = '';
-
-
-        if (isset( $config['background'] ) && is_string( $config['background'] )) {
-            $config['options']['style'] = implode( ';', array_merge( [ $config['options']['style'] ], [ "background-image:url({$config['background']})" ] ) );
-            $config['options']['style'] = str_replace( ';;', ';', $config['options']['style'] );
-            $config['options']['style'] = trim( $config['options']['style'], ';' );
-        }
-        if ( ! $config['options']['style']) {
-            unset( $config['options']['style'] );
+        if (ArrayHelper::getValue( $config, self::HASH )) {
+            $slideOptions['data']['hash'] = $config[self::HASH];
         }
 
-        if (isset( $config["hash"] ) && ! empty( $config["hash"] )) {
-            $config["options"]["data"]["hash"] = $config["hash"];
-        }
+        $config['options'] = array_filter( $slideOptions );
 
         parent::__construct( $config );
     }

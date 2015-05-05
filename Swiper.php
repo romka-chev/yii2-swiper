@@ -13,7 +13,7 @@ use yii\web\JsExpression;
  * A Swiper widget is adapter to javascript Swiper slider;
  * it uses v3.0.3+ version of Swiper.
  *
- * @link http://www.idangero.us/swiper/
+ * @link    http://www.idangero.us/swiper/
  *
  * @package romkaChev\yii2\swiper
  */
@@ -396,76 +396,35 @@ class Swiper extends Widget
      */
     protected function normalizeOptions()
     {
-        $generatedId = $this->getId();
+        $id = ArrayHelper::getValue( $this->containerOptions, 'id', $this->getId() );
 
-        if ( ! isset( $this->containerOptions['id'] ) || empty( $this->containerOptions['id'] )) {
-            $this->containerOptions['id'] = $generatedId;
-        }
-        if ( ! isset( $this->containerOptions['class'] ) || empty( $this->containerOptions['class'] )) {
-            $this->containerOptions['class'] = 'swiper-container';
-        } else {
-            $this->containerOptions['class'] = implode( " ", [ 'swiper-container', $this->containerOptions['class'] ] );
-        }
+        //@formatter:off
 
-        if ( ! isset( $this->wrapperOptions['id'] ) || empty( $this->wrapperOptions['id'] )) {
-            $this->wrapperOptions['id'] = "{$this->containerOptions['id']}-wrapper";
-        }
-        if ( ! isset( $this->wrapperOptions['class'] ) || empty( $this->wrapperOptions['class'] )) {
-            $this->wrapperOptions['class'] = 'swiper-wrapper';
-        } else {
-            $this->wrapperOptions['class'] = implode( " ", [ 'swiper-wrapper', $this->wrapperOptions['class'] ] );
-        }
+        $this->containerOptions['id']     = $id;
+        $this->containerOptions['class']  = ArrayHelper::getValue($this->containerOptions,  'class', '') . ' swiper-container';
 
-        if ( ! isset( $this->paginationOptions['id'] ) || empty( $this->paginationOptions['id'] )) {
-            $this->paginationOptions['id'] = "{$this->containerOptions['id']}-swiper-pagination";
-        }
-        if ( ! isset( $this->paginationOptions['class'] ) || empty( $this->paginationOptions['class'] )) {
-            $this->paginationOptions['class'] = 'swiper-pagination';
-        } else {
-            $this->paginationOptions['class'] = implode( " ", [ 'swiper-pagination', $this->paginationOptions['class'] ] );
-        }
+        $this->wrapperOptions['id']       = ArrayHelper::getValue($this->wrapperOptions,    'id', "{$id}-wrapper");
+        $this->wrapperOptions['class']    = ArrayHelper::getValue($this->wrapperOptions,    'class', '') . ' swiper-wrapper';
 
-        if ( ! isset( $this->scrollbarOptions['id'] ) || empty( $this->scrollbarOptions['id'] )) {
-            $this->scrollbarOptions['id'] = "{$this->containerOptions['id']}-swiper-scrollbar";
-        }
-        if ( ! isset( $this->scrollbarOptions['class'] ) || empty( $this->scrollbarOptions['class'] )) {
-            $this->scrollbarOptions['class'] = 'swiper-scrollbar';
-        } else {
-            $this->scrollbarOptions['class'] = implode( " ", [ 'swiper-scrollbar', $this->scrollbarOptions['class'] ] );
-        }
+        $this->paginationOptions['id']    = ArrayHelper::getValue($this->paginationOptions, 'id', "{$id}-pagination");
+        $this->paginationOptions['class'] = ArrayHelper::getValue($this->paginationOptions, 'class', '') . ' swiper-pagination';
 
-        if ( ! isset( $this->nextButtonOptions['id'] ) || empty( $this->nextButtonOptions['id'] )) {
-            $this->nextButtonOptions['id'] = "{$this->containerOptions['id']}-swiper-button-next";
-        }
-        if ( ! isset( $this->nextButtonOptions['class'] ) || empty( $this->nextButtonOptions['class'] )) {
-            $this->nextButtonOptions['class'] = 'swiper-button-next';
-        } else {
-            $this->nextButtonOptions['class'] = implode( " ", [ 'swiper-button-next', $this->nextButtonOptions['class'] ] );
-        }
+        $this->scrollbarOptions['id']     = ArrayHelper::getValue($this->scrollbarOptions,  'id', "{$id}-scrollbar");
+        $this->scrollbarOptions['class']  = ArrayHelper::getValue($this->scrollbarOptions,  'class', '') . ' swiper-scrollbar';
 
-        if ( ! isset( $this->prevButtonOptions['id'] ) || empty( $this->prevButtonOptions['id'] )) {
-            $this->prevButtonOptions['id'] = "{$this->containerOptions['id']}-swiper-button-prev";
-        }
-        if ( ! isset( $this->prevButtonOptions['class'] ) || empty( $this->prevButtonOptions['class'] )) {
-            $this->prevButtonOptions['class'] = 'swiper-button-prev';
-        } else {
-            $this->prevButtonOptions['class'] = implode( " ", [ 'swiper-button-prev', $this->prevButtonOptions['class'] ] );
-        }
+        $this->nextButtonOptions['id']    = ArrayHelper::getValue($this->nextButtonOptions, 'id', "{$id}-button-next");
+        $this->nextButtonOptions['class'] = ArrayHelper::getValue($this->nextButtonOptions, 'class', '') . ' swiper-button-next';
 
-        if ( ! isset( $this->parallaxOptions['id'] ) || empty( $this->parallaxOptions['id'] )) {
-            $this->parallaxOptions['id'] = "{$this->containerOptions['id']}-parallax";
-        }
-        if ( ! isset( $this->parallaxOptions['class'] ) || empty( $this->parallaxOptions['class'] )) {
-            $this->parallaxOptions['class'] = 'parallax-bg';
-        } else {
-            $this->parallaxOptions['class'] = implode( " ", [ 'parallax-bg', $this->parallaxOptions['class'] ] );
-        }
+        $this->prevButtonOptions['id']    = ArrayHelper::getValue($this->prevButtonOptions, 'id', "{$id}-button-prev");
+        $this->prevButtonOptions['class'] = ArrayHelper::getValue($this->nextButtonOptions, 'class', '') . ' swiper-button-prev';
 
-        if ( ! isset( $this->itemOptions['class'] ) || empty( $this->itemOptions['class'] )) {
-            $this->itemOptions['class'] = 'swiper-slide';
-        } else {
-            $this->itemOptions['class'] = implode( " ", [ 'swiper-slide', $this->itemOptions['class'] ] );
-        }
+        $this->parallaxOptions['id']      = ArrayHelper::getValue($this->parallaxOptions,   'id', "{$id}-parallax");
+        $this->parallaxOptions['class']   = ArrayHelper::getValue($this->parallaxOptions,   'class', '') . ' parallax-bg';
+
+        $this->itemOptions['class']       = ArrayHelper::getValue($this->itemOptions,       'class', '') . ' swiper-slide';
+
+        //@formatter:on
+
     }
 
     /**
@@ -518,37 +477,27 @@ class Swiper extends Widget
      */
     protected function renderBehaviourParallax()
     {
-        if (in_array( self::BEHAVIOUR_PARALLAX, $this->behaviours )) {
-            $parallaxOptions = $this->parallaxOptions;
-            $parallaxTag     = ArrayHelper::remove( $parallaxOptions, 'tag', 'div' );
-
-            ! isset( $parallaxOptions['style'] ) && $parallaxOptions['style'] = '';
-            if (isset( $parallaxOptions[self::PARALLAX_BACKGROUND] ) && ! empty( $parallaxOptions[self::PARALLAX_BACKGROUND] )) {
-
-                $parallaxBackground = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_BACKGROUND );
-
-                $parallaxOptions['style'] = implode( ';', array_merge( [ $parallaxOptions['style'] ], [ "background-image:url({$parallaxBackground})" ] ) );
-                $parallaxOptions['style'] = str_replace( ';;', ';', $parallaxOptions['style'] );
-                $parallaxOptions['style'] = trim( $parallaxOptions['style'], ';' );
-            }
-
-            if (isset( $parallaxOptions[self::PARALLAX_TRANSITION] )) {
-                $parallaxOptions['data']['swiper-parallax'] = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION );
-            }
-            if (isset( $parallaxOptions[self::PARALLAX_TRANSITION_X] )) {
-                $parallaxOptions['data']['swiper-parallax-x'] = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_X );
-            }
-            if (isset( $parallaxOptions[self::PARALLAX_TRANSITION_Y] )) {
-                $parallaxOptions['data']['swiper-parallax-y'] = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_Y );
-            }
-            if (isset( $parallaxOptions[self::PARALLAX_DURATION] )) {
-                $parallaxOptions['data']['swiper-parallax-duration'] = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_DURATION );
-            }
-
-            return Html::tag( $parallaxTag, '', $parallaxOptions );
+        if ( ! in_array( self::BEHAVIOUR_PARALLAX, $this->behaviours )) {
+            return '';
         }
 
-        return '';
+        $parallaxOptions = $this->parallaxOptions;
+        $parallaxTag     = ArrayHelper::remove( $parallaxOptions, 'tag', 'div' );
+
+        if (ArrayHelper::getValue( $parallaxOptions, self::PARALLAX_BACKGROUND )) {
+            $parallaxBackground       = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_BACKGROUND );
+            $parallaxOptions['style'] = ArrayHelper::getValue( $parallaxOptions, 'style', '' ) . ";background-image:url({$parallaxBackground});";
+            $parallaxOptions['style'] = trim( $parallaxOptions['style'], ';' );
+        }
+
+        $parallaxOptions['data']['swiper-parallax']          = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION );
+        $parallaxOptions['data']['swiper-parallax-x']        = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_X );
+        $parallaxOptions['data']['swiper-parallax-y']        = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_Y );
+        $parallaxOptions['data']['swiper-parallax-duration'] = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_DURATION );
+
+        $parallaxOptions['data'] = array_filter( $parallaxOptions['data'] );
+
+        return Html::tag( $parallaxTag, '', $parallaxOptions );
     }
 
     /**
@@ -731,8 +680,8 @@ class Swiper extends Widget
     protected function renderItems( array $items )
     {
         $renderedItems = [ ];
-        foreach ($items as $item) {
-            $renderedItems[] = $this->renderItem( $item );
+        foreach ($items as $index => $item) {
+            $renderedItems[] = $this->renderItem( $item, $index );
         }
 
         return implode( "\n        ", $renderedItems );
@@ -742,16 +691,19 @@ class Swiper extends Widget
      * This function renders an item
      *
      * @param Slide $slide
+     * @param int   $index numeric index of slide (for id generation)
      *
      * @see \romkaChev\yii2\swiper\Swiper::$items
      * @see \romkaChev\yii2\swiper\Swiper::$itemOptions
      *
      * @return string
      */
-    protected function renderItem( Slide $slide )
+    protected function renderItem( Slide $slide, $index )
     {
-        $options = array_replace_recursive( $this->itemOptions, $slide->options );
-        $tag     = ArrayHelper::remove( $options, 'tag', 'div' );
+        $options       = array_replace_recursive( $this->itemOptions, $slide->options );
+        $options['id'] = ArrayHelper::getValue( $options, 'id', "{$this->containerOptions['id']}-slide-{$index}" );
+
+        $tag = ArrayHelper::remove( $options, 'tag', 'div' );
 
         return Html::tag( $tag, $slide->content, $options );
     }
