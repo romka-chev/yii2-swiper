@@ -330,10 +330,10 @@ class Swiper extends Widget
      */
     public function addItem( $item = [ ] )
     {
-        if ( ! $item instanceof Slide) {
-            $this->items[] = new Slide( $item );
-        } else {
+        if ($item instanceof Slide) {
             $this->items[] = $item;
+        } else {
+            $this->items[] = new Slide( $item );
         }
 
         return $this;
