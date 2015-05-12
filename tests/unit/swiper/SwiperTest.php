@@ -308,6 +308,40 @@ class SwiperTest extends BaseTestCase
         $this->assertEquals( 'custom-data-prev-button-id', $swiper->prevButtonOptions['data']['id'] );
     }
 
+    public function testParallaxBackgroundMatching()
+    {
+        $swiper = new Swiper( [
+            'items'           => [
+                'slide 01',
+            ],
+            'parallaxOptions' => [
+                'style' => 'color: #ffffff; background:url(http://lorempixel.com/900/600/nightlife/2/);',
+                'data'  => [
+                    'swiper-parallax'          => '23%',
+                    'swiper-parallax-duration' => '750',
+                ]
+            ]
+        ] );
+
+        $this->assertEquals( 'http://lorempixel.com/900/600/nightlife/2/', $swiper->parallaxOptions['background'] );
+
+
+        $swiper = new Swiper( [
+            'items'           => [
+                'slide 01',
+            ],
+            'parallaxOptions' => [
+                'style' => 'color: #ffffff; background-image:url(http://lorempixel.com/900/600/nightlife/2/);',
+                'data'  => [
+                    'swiper-parallax'          => '23%',
+                    'swiper-parallax-duration' => '750',
+                ]
+            ]
+        ] );
+
+        $this->assertEquals( 'http://lorempixel.com/900/600/nightlife/2/', $swiper->parallaxOptions['background'] );
+    }
+
     public function testParallaxOptionsViaShorthands()
     {
         $swiper = new Swiper( [
