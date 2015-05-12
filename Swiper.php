@@ -513,7 +513,6 @@ class Swiper extends Widget
         }
     }
 
-
     /**
      * Checks if there is invalid behaviour given.
      * If given, then throws exception
@@ -781,7 +780,7 @@ class Swiper extends Widget
      * @see \romkaChev\yii2\swiper\Swiper::$items
      * @see \romkaChev\yii2\swiper\Swiper::$itemOptions
      *
-     * @return mixed
+     * @return mixed[]
      */
     protected function getNormalizedItemOptions( Slide $slide, $index )
     {
