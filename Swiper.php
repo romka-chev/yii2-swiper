@@ -416,7 +416,7 @@ class Swiper extends Widget
         $this->nextButtonOptions['class'] = ArrayHelper::getValue($this->nextButtonOptions, 'class', '') . ' swiper-button-next';
 
         $this->prevButtonOptions['id']    = ArrayHelper::getValue($this->prevButtonOptions, 'id', "{$id}-button-prev");
-        $this->prevButtonOptions['class'] = ArrayHelper::getValue($this->nextButtonOptions, 'class', '') . ' swiper-button-prev';
+        $this->prevButtonOptions['class'] = ArrayHelper::getValue($this->prevButtonOptions, 'class', '') . ' swiper-button-prev';
 
         $this->parallaxOptions['id']      = ArrayHelper::getValue($this->parallaxOptions,   'id', "{$id}-parallax");
         $this->parallaxOptions['class']   = ArrayHelper::getValue($this->parallaxOptions,   'class', '') . ' parallax-bg';
