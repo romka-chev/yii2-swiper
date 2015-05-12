@@ -730,9 +730,9 @@ class Swiper extends Widget
 
         $wrapperOptions  = $this->wrapperOptions;
         $wrapperTag      = ArrayHelper::remove( $wrapperOptions, 'tag', 'div' );
-        $renderedWrapper = Html::tag( $wrapperTag, "\n        $renderedItems\n    ", $wrapperOptions );
+        $renderedWrapper = Html::tag( $wrapperTag, PHP_EOL . $renderedItems . PHP_EOL, $wrapperOptions );
 
-        return "\n    $renderedWrapper\n";
+        return PHP_EOL . $renderedWrapper . PHP_EOL;
     }
 
     /**
@@ -751,7 +751,7 @@ class Swiper extends Widget
             $renderedItems[] = $this->renderItem( $item, $index );
         }
 
-        return implode( "\n        ", $renderedItems );
+        return implode( PHP_EOL, $renderedItems );
     }
 
     /**
