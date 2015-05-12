@@ -39,6 +39,7 @@ class Swiper extends Widget
      *
      * @see \romkaChev\yii2\swiper\Swiper::normalizeOptions
      * @see \romkaChev\yii2\swiper\Swiper::renderItem
+     * @see \romkaChev\yii2\swiper\Swiper::getNormalizedItemOptions
      *
      * @see \romkaChev\yii2\swiper\Slide::$options
      */
@@ -400,30 +401,102 @@ class Swiper extends Widget
 
         //@formatter:off
 
+        $this->itemOptions['class']       = trim(ArrayHelper::getValue($this->itemOptions,       'class', '') . ' swiper-slide', ' ');
+
         $this->containerOptions['id']     = $id;
-        $this->containerOptions['class']  = ArrayHelper::getValue($this->containerOptions,  'class', '') . ' swiper-container';
+        $this->containerOptions['class']  = trim(ArrayHelper::getValue($this->containerOptions,  'class', '') . ' swiper-container', ' ');
 
         $this->wrapperOptions['id']       = ArrayHelper::getValue($this->wrapperOptions,    'id', "{$id}-wrapper");
-        $this->wrapperOptions['class']    = ArrayHelper::getValue($this->wrapperOptions,    'class', '') . ' swiper-wrapper';
+        $this->wrapperOptions['class']    = trim(ArrayHelper::getValue($this->wrapperOptions,    'class', '') . ' swiper-wrapper', ' ');
 
         $this->paginationOptions['id']    = ArrayHelper::getValue($this->paginationOptions, 'id', "{$id}-pagination");
-        $this->paginationOptions['class'] = ArrayHelper::getValue($this->paginationOptions, 'class', '') . ' swiper-pagination';
+        $this->paginationOptions['class'] = trim(ArrayHelper::getValue($this->paginationOptions, 'class', '') . ' swiper-pagination', ' ');
 
         $this->scrollbarOptions['id']     = ArrayHelper::getValue($this->scrollbarOptions,  'id', "{$id}-scrollbar");
-        $this->scrollbarOptions['class']  = ArrayHelper::getValue($this->scrollbarOptions,  'class', '') . ' swiper-scrollbar';
+        $this->scrollbarOptions['class']  = trim(ArrayHelper::getValue($this->scrollbarOptions,  'class', '') . ' swiper-scrollbar', ' ');
 
         $this->nextButtonOptions['id']    = ArrayHelper::getValue($this->nextButtonOptions, 'id', "{$id}-button-next");
-        $this->nextButtonOptions['class'] = ArrayHelper::getValue($this->nextButtonOptions, 'class', '') . ' swiper-button-next';
+        $this->nextButtonOptions['class'] = trim(ArrayHelper::getValue($this->nextButtonOptions, 'class', '') . ' swiper-button-next', ' ');
 
         $this->prevButtonOptions['id']    = ArrayHelper::getValue($this->prevButtonOptions, 'id', "{$id}-button-prev");
-        $this->prevButtonOptions['class'] = ArrayHelper::getValue($this->prevButtonOptions, 'class', '') . ' swiper-button-prev';
+        $this->prevButtonOptions['class'] = trim(ArrayHelper::getValue($this->prevButtonOptions, 'class', '') . ' swiper-button-prev', ' ');
 
         $this->parallaxOptions['id']      = ArrayHelper::getValue($this->parallaxOptions,   'id', "{$id}-parallax");
-        $this->parallaxOptions['class']   = ArrayHelper::getValue($this->parallaxOptions,   'class', '') . ' parallax-bg';
+        $this->parallaxOptions['class']   = trim(ArrayHelper::getValue($this->parallaxOptions,   'class', '') . ' parallax-bg', ' ');
+        $this->parallaxOptions['data']    = ArrayHelper::getValue($this->parallaxOptions,   'data', []);
 
-        $this->itemOptions['class']       = ArrayHelper::getValue($this->itemOptions,       'class', '') . ' swiper-slide';
+        /**
+         * Parallax options, specified via shorthands, have more priority
+         * than directly specified options
+         */
+        $this->parallaxOptions['data']['swiper-parallax']          = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_TRANSITION,   ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax',          null) );
+        $this->parallaxOptions['data']['swiper-parallax-x']        = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_TRANSITION_X, ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax-x',        null) );
+        $this->parallaxOptions['data']['swiper-parallax-y']        = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_TRANSITION_Y, ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax-y',        null) );
+        $this->parallaxOptions['data']['swiper-parallax-duration'] = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_DURATION,     ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax-duration', null) );
+
+        $this->parallaxOptions[self::PARALLAX_TRANSITION]          = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_TRANSITION,   ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax',          null) );
+        $this->parallaxOptions[self::PARALLAX_TRANSITION_X]        = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_TRANSITION_X, ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax-x',        null) );
+        $this->parallaxOptions[self::PARALLAX_TRANSITION_Y]        = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_TRANSITION_Y, ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax-y',        null) );
+        $this->parallaxOptions[self::PARALLAX_DURATION]            = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_DURATION,     ArrayHelper::getValue( $this->parallaxOptions['data'], 'swiper-parallax-duration', null) );
+
+        $this->parallaxOptions['data'] = array_filter( $this->parallaxOptions['data'] );
 
         //@formatter:on
+
+        /**
+         * Background options, specified via shorthand have more priority
+         * than option, specified in [[style]] section. And it will be
+         * placed AFTER data in [[style]] option
+         *
+         * For example:
+         *
+         * ~~~
+         *  \romkaChev\yii2\swiper\Swiper::widget( [
+         *      'items'           => ['slide01', 'slide02'],
+         *      'behaviours'      => [
+         *          Swiper::BEHAVIOUR_PARALLAX,
+         *      ],
+         *      'parallaxOptions' => [
+         *          'transition' => '-20%',
+         *          'background' => 'http://placehold.it/1920x1080',
+         *          'style'      => 'background-image: url(http://placehold.it/800x600)'
+         *      ],
+         *      'pluginOptions'   => [
+         *          Swiper::OPTION_PARALLAX => true
+         *      ]
+         *  ] );
+         * ~~~
+         *
+         * This code will produce parallax tag with following attributes:
+         *
+         * ~~~
+         *  <div id                   = "w0-parallax"
+         *       class                = "parallax-bg"
+         *       style                = "background-image: url(http://placehold.it/800x600); background-image:url(http://placehold.it/1920x1080)"
+         *       data-swiper-parallax = "-20%">
+         * </div>
+         * ~~~
+         */
+        if (ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND )) {
+
+            $parallaxBackground             = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND );
+            $this->parallaxOptions['style'] = trim( ArrayHelper::getValue( $this->parallaxOptions, 'style', '' ), '; ' ) . "; background-image:url({$parallaxBackground});";
+            $this->parallaxOptions['style'] = trim( $this->parallaxOptions['style'], '; ' );
+
+        } elseif (ArrayHelper::getValue( $this->parallaxOptions, 'style' )) {
+
+            /**
+             * This section will parse [[background-image]] or [[background]] property from
+             * [[style]] option.
+             * And then push it to \romkaChev\yii2\swiper\Swiper::$parallaxOptions['background']
+             */
+
+            $patten = '/background(-image)?\s*:\s*url\s*\((?<source>[^\)]*)/';
+            preg_match( $patten, $this->parallaxOptions['style'], $backgroundImage );
+
+            $this->parallaxOptions[self::PARALLAX_BACKGROUND] = ArrayHelper::getValue( $backgroundImage, 'source', null );
+
+        }
 
     }
 
@@ -439,6 +512,7 @@ class Swiper extends Widget
             }
         }
     }
+
 
     /**
      * Checks if there is invalid behaviour given.
@@ -484,18 +558,11 @@ class Swiper extends Widget
         $parallaxOptions = $this->parallaxOptions;
         $parallaxTag     = ArrayHelper::remove( $parallaxOptions, 'tag', 'div' );
 
-        if (ArrayHelper::getValue( $parallaxOptions, self::PARALLAX_BACKGROUND )) {
-            $parallaxBackground       = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_BACKGROUND );
-            $parallaxOptions['style'] = ArrayHelper::getValue( $parallaxOptions, 'style', '' ) . ";background-image:url({$parallaxBackground});";
-            $parallaxOptions['style'] = trim( $parallaxOptions['style'], ';' );
-        }
-
-        $parallaxOptions['data']['swiper-parallax']          = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION );
-        $parallaxOptions['data']['swiper-parallax-x']        = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_X );
-        $parallaxOptions['data']['swiper-parallax-y']        = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_Y );
-        $parallaxOptions['data']['swiper-parallax-duration'] = ArrayHelper::remove( $parallaxOptions, self::PARALLAX_DURATION );
-
-        $parallaxOptions['data'] = array_filter( $parallaxOptions['data'] );
+        ArrayHelper::remove( $parallaxOptions, self::PARALLAX_BACKGROUND );
+        ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION );
+        ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_X );
+        ArrayHelper::remove( $parallaxOptions, self::PARALLAX_TRANSITION_Y );
+        ArrayHelper::remove( $parallaxOptions, self::PARALLAX_DURATION );
 
         return Html::tag( $parallaxTag, '', $parallaxOptions );
     }
@@ -695,17 +762,37 @@ class Swiper extends Widget
      *
      * @see \romkaChev\yii2\swiper\Swiper::$items
      * @see \romkaChev\yii2\swiper\Swiper::$itemOptions
+     * @see \romkaChev\yii2\swiper\Swiper::getNormalizedItemOptions
      *
      * @return string
      */
     protected function renderItem( Slide $slide, $index )
     {
+        $options = $this->getNormalizedItemOptions( $slide, $index );
+        $tag     = ArrayHelper::remove( $options, 'tag', 'div' );
+
+        return Html::tag( $tag, $slide->content, $options );
+    }
+
+    /**
+     * @param \romkaChev\yii2\swiper\Slide $slide
+     * @param int                          $index numeric index of slide (for id generation)
+     *
+     * @see \romkaChev\yii2\swiper\Swiper::$items
+     * @see \romkaChev\yii2\swiper\Swiper::$itemOptions
+     *
+     * @return mixed
+     */
+    protected function getNormalizedItemOptions( Slide $slide, $index )
+    {
+        $itemClass = ArrayHelper::getValue( $slide->options, 'class', '' );
+
+        $slide->options['class'] = trim( ArrayHelper::getValue( $this->itemOptions, 'class', '' ) . " {$itemClass}", ' ' );
+
         $options       = array_replace_recursive( $this->itemOptions, $slide->options );
         $options['id'] = ArrayHelper::getValue( $options, 'id', "{$this->containerOptions['id']}-slide-{$index}" );
 
-        $tag = ArrayHelper::remove( $options, 'tag', 'div' );
-
-        return Html::tag( $tag, $slide->content, $options );
+        return $options;
     }
 
     /**
