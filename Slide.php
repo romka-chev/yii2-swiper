@@ -88,7 +88,7 @@ class Slide extends Object
             ? [ self::CONTENT => $config ]
             : $config;
 
-        $config[self::CONTENT] = ArrayHelper::getValue( $config, self::CONTENT, '' );
+        $config[self::CONTENT] = ArrayHelper::getValue( $config, self::CONTENT, null );
 
         $config[self::CONTENT] = is_array( $config[self::CONTENT] )
             ? implode( '', $config[self::CONTENT] )
