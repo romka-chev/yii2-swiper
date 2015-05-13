@@ -1,7 +1,7 @@
 <?php
 namespace romkaChev\yii2\swiper;
 
-use romkaChev\yii2\swiper\helpers\CssHelper;
+use romkaChev\yii2\swiper\helpers\SwiperCssHelper;
 use yii\base\Object;
 use yii\helpers\ArrayHelper;
 
@@ -120,14 +120,14 @@ class Slide extends Object
 
         if ($this->background) {
 
-            $this->options['style'] = CssHelper::mergeStyleAndBackground(
+            $this->options['style'] = SwiperCssHelper::mergeStyleAndBackground(
                 $this->background,
                 ArrayHelper::getValue( $this->options, 'style', '' )
             );
 
         } elseif (ArrayHelper::getValue( $this->options, 'style' )) {
 
-            $this->background = CssHelper::getBackgroundUrl(
+            $this->background = SwiperCssHelper::getBackgroundUrl(
                 $this->options['style']
             );
 

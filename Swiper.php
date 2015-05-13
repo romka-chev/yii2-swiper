@@ -2,7 +2,7 @@
 namespace romkaChev\yii2\swiper;
 
 use romkaChev\yii2\swiper\assets\SwiperAsset;
-use romkaChev\yii2\swiper\helpers\CssHelper;
+use romkaChev\yii2\swiper\helpers\SwiperCssHelper;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -446,14 +446,14 @@ class Swiper extends Widget
 
         if (ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND )) {
 
-            $this->parallaxOptions['style'] = CssHelper::mergeStyleAndBackground(
+            $this->parallaxOptions['style'] = SwiperCssHelper::mergeStyleAndBackground(
                 ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND, '' ),
                 ArrayHelper::getValue( $this->parallaxOptions, 'style', '' )
             );
 
         } elseif (ArrayHelper::getValue( $this->parallaxOptions, 'style' )) {
 
-            $this->parallaxOptions[self::PARALLAX_BACKGROUND] = CssHelper::getBackgroundUrl(
+            $this->parallaxOptions[self::PARALLAX_BACKGROUND] = SwiperCssHelper::getBackgroundUrl(
                 $this->parallaxOptions['style']
             );
 

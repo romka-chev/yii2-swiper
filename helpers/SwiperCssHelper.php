@@ -5,11 +5,11 @@ namespace romkaChev\yii2\swiper\helpers;
 use yii\helpers\ArrayHelper;
 
 /**
- * Class CssHelper
+ * Class SwiperCssHelper
  *
  * @package romkaChev\yii2\swiper\helpers
  */
-class CssHelper
+class SwiperCssHelper
 {
 
     /**
