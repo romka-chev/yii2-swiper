@@ -3,17 +3,17 @@
 ## Использование
 
 * [Слайды](slides.md)
-* [Эффекты](effects.md)
+* **TBD** [Эффекты](effects.md)
 
 ## Поведения
 
-* [Пагинация](behaviours-pagination.md)
-* [Скроллбар](behaviours-scrollbar.md)
-* [RTL](behaviours-rtl.md)
-* [Кнопки влево и вправо](behaviours-navigation-buttons.md)
-* [Параллакс](behaviours-parallax.md)
+* **TBD** [Пагинация](behaviours-pagination.md)
+* **TBD** [Скроллбар](behaviours-scrollbar.md)
+* **TBD** [RTL](behaviours-rtl.md)
+* **TBD** [Кнопки влево и вправо](behaviours-navigation-buttons.md)
+* **TBD** [Параллакс](behaviours-parallax.md)
 
 ## Опции
 
-* [Короткие алиасы](options-shorthands.md)
-* [Сортировка](options-ordering.md)
+* **TBD** [Короткие алиасы](options-shorthands.md)
+* **TBD** [Сортировка](options-ordering.md)
