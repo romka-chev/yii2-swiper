@@ -51,7 +51,7 @@ class SlideTest extends BaseTestCase
     {
         $slide = new Slide( [ ] );
 
-        $this->assertEquals( null, $slide->content );
+        $this->assertSame( null, $slide->content );
     }
 
     public function testConstructionWithShorthands()
@@ -68,7 +68,6 @@ class SlideTest extends BaseTestCase
         $this->assertEquals( 'background-image:url(http://lorempixel.com/900/600/nightlife/2/)', $slide->options['style'] );
         $this->assertEquals( 'slide00', $slide->options['data']['hash'] );
     }
-
 
     public function testConstructionWithDirectAttributes()
     {
@@ -109,7 +108,6 @@ class SlideTest extends BaseTestCase
         $this->assertEquals( 'background-image:url(http://placehold.it/800x600); background-image:url(http://placehold.it/1920x1080)', $slide->options['style'] );
         $this->assertEquals( 'slide11', $slide->options['data']['hash'] );
     }
-
 
     public function testParsingBackground()
     {
