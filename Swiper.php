@@ -2,6 +2,7 @@
 namespace romkaChev\yii2\swiper;
 
 use romkaChev\yii2\swiper\assets\SwiperAsset;
+use romkaChev\yii2\swiper\helpers\CssHelper;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -443,61 +444,20 @@ class Swiper extends Widget
 
         //@formatter:on
 
-        /**
-         * Background options, specified via shorthand have more priority
-         * than option, specified in [[style]] section. And it will be
-         * placed AFTER data in [[style]] option
-         *
-         * For example:
-         *
-         * ~~~
-         *  \romkaChev\yii2\swiper\Swiper::widget( [
-         *      'items'           => ['slide01', 'slide02'],
-         *      'behaviours'      => [
-         *          Swiper::BEHAVIOUR_PARALLAX,
-         *      ],
-         *      'parallaxOptions' => [
-         *          'transition' => '-20%',
-         *          'background' => 'http://placehold.it/1920x1080',
-         *          'style'      => 'background-image: url(http://placehold.it/800x600)'
-         *      ],
-         *      'pluginOptions'   => [
-         *          Swiper::OPTION_PARALLAX => true
-         *      ]
-         *  ] );
-         * ~~~
-         *
-         * This code will produce parallax tag with following attributes:
-         *
-         * ~~~
-         *  <div id                   = "w0-parallax"
-         *       class                = "parallax-bg"
-         *       style                = "background-image: url(http://placehold.it/800x600); background-image:url(http://placehold.it/1920x1080)"
-         *       data-swiper-parallax = "-20%">
-         * </div>
-         * ~~~
-         */
         if (ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND )) {
 
-            $parallaxBackground             = ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND );
-            $this->parallaxOptions['style'] = trim( ArrayHelper::getValue( $this->parallaxOptions, 'style', '' ), '; ' ) . "; background-image:url({$parallaxBackground});";
-            $this->parallaxOptions['style'] = trim( $this->parallaxOptions['style'], '; ' );
+            $this->parallaxOptions['style'] = CssHelper::mergeStyleAndBackground(
+                ArrayHelper::getValue( $this->parallaxOptions, self::PARALLAX_BACKGROUND, '' ),
+                ArrayHelper::getValue( $this->parallaxOptions, 'style', '' )
+            );
 
         } elseif (ArrayHelper::getValue( $this->parallaxOptions, 'style' )) {
 
-            /**
-             * This section will parse [[background-image]] or [[background]] property from
-             * [[style]] option.
-             * And then push it to \romkaChev\yii2\swiper\Swiper::$parallaxOptions['background']
-             */
-
-            $patten = '/background(-image)?\s*:\s*url\s*\((?<source>[^\)]*)/';
-            preg_match( $patten, $this->parallaxOptions['style'], $backgroundImage );
-
-            $this->parallaxOptions[self::PARALLAX_BACKGROUND] = ArrayHelper::getValue( $backgroundImage, 'source', null );
+            $this->parallaxOptions[self::PARALLAX_BACKGROUND] = CssHelper::getBackgroundUrl(
+                $this->parallaxOptions['style']
+            );
 
         }
-
     }
 
     /**
