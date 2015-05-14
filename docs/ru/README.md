@@ -2,9 +2,9 @@
 
 ## Использование
 
-* [Слайды](slides.md)
-* [Эффекты](effects.md)
-* **TBD** Lazy-loading
+* [Слайды](usage-slides.md)
+* [Эффекты](usage-effects.md)
+* [Lazy-loading](usage-lazy-loading.md)
 
 ## Поведения
 
