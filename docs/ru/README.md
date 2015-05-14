@@ -17,5 +17,5 @@
 ## Опции
 
 * [Групповая настройка слайдов](options-slide-batch.md)
-* **TBD** [Короткие алиасы](options-shorthands.md)
+* [Алиасы](options-aliases.md)
 * **TBD** [Конфликты алиасов и прямых опций](options-ordering.md)
