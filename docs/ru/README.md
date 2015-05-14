@@ -4,6 +4,7 @@
 
 * [Слайды](slides.md)
 * **TBD** [Эффекты](effects.md)
+* **TBD** Lazy-loading
 
 ## Поведения
 
