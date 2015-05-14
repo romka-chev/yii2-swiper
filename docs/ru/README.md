@@ -12,7 +12,7 @@
 * [Скроллбар](behaviours-scrollbar.md)
 * [Кнопки "предыдущий" и "следующий"](behaviours-navigation-buttons.md)
 * [Параллакс](behaviours-parallax.md)
-* **TBD** [Отображение справа налево](behaviours-rtl.md)
+* [Отображение справа налево](behaviours-rtl.md)
 
 ## Опции
 
