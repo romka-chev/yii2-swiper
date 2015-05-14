@@ -8,7 +8,7 @@
 
 ## Поведения
 
-* **TBD** [Пагинация](behaviours-pagination.md)
+* [Пагинация](behaviours-pagination.md)
 * **TBD** [Скроллбар](behaviours-scrollbar.md)
 * **TBD** [RTL](behaviours-rtl.md)
 * **TBD** [Кнопки влево и вправо](behaviours-navigation-buttons.md)
