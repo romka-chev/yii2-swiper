@@ -2,7 +2,9 @@
 
 Yii2 extension for Swiper slider. See more here: [https://github.com/nolimits4web/Swiper/](https://github.com/nolimits4web/Swiper).
 
-You can find examples in [demos](https://github.com/romka-chev/yii2-swiper/tree/master/demos) folder.
+You can find examples in [demos](demos) folder.
+
+Also you can read [documentation](docs).
 
 ## Installation
  
@@ -67,6 +69,6 @@ echo Swiper::widget( [
 
 ## Issues
 
-If some problems occurred, you can create [issue](https://github.com/romka-chev/yii2-swiper/issues).
+If some problems occurred, you can create [issue](issues).
 
 Thank you for attention.
