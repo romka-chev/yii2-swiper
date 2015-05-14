@@ -3,7 +3,7 @@
 ## Использование
 
 * [Слайды](slides.md)
-* **TBD** [Эффекты](effects.md)
+* [Эффекты](effects.md)
 * **TBD** Lazy-loading
 
 ## Поведения
