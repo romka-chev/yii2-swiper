@@ -10,9 +10,9 @@
 
 * [Пагинация](behaviours-pagination.md)
 * [Скроллбар](behaviours-scrollbar.md)
-* **TBD** [RTL](behaviours-rtl.md)
 * **TBD** [Кнопки влево и вправо](behaviours-navigation-buttons.md)
 * **TBD** [Параллакс](behaviours-parallax.md)
+* **TBD** [Отображение справа налево](behaviours-rtl.md)
 
 ## Опции
 
