@@ -16,6 +16,6 @@
 
 ## Опции
 
-* **TBD** Групповая настройка слайдов
+* [Групповая настройка слайдов](options-slide-batch.md)
 * **TBD** [Короткие алиасы](options-shorthands.md)
 * **TBD** [Сортировка](options-ordering.md)
