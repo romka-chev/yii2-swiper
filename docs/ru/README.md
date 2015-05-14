@@ -18,4 +18,4 @@
 
 * [Групповая настройка слайдов](options-slide-batch.md)
 * **TBD** [Короткие алиасы](options-shorthands.md)
-* **TBD** [Сортировка](options-ordering.md)
+* **TBD** [Конфликты алиасов и прямых опций](options-ordering.md)
