@@ -16,15 +16,28 @@ echo Swiper::widget( [
   'items'         => [
     'Slide 1',
     'Slide 2',
-    'Slide 3',
-    'Slide 4',
-    'Slide 5'
+    'Slide 3'
   ],
   'behaviours'    => [
     'pagination' // Объявление пагинации
   ],
   'pluginOptions' => [
     'paginationClickable' => true
+  ]
+] );
+
+// С именованными константами
+echo Swiper::widget( [
+  'items'         => [
+    'Slide 1',
+    'Slide 2',
+    'Slide 3'
+  ],
+  'behaviours'    => [
+    Swiper::BEHAVIOUR_PAGINATION // Объявление пагинации
+  ],
+  'pluginOptions' => [
+    Swiper::OPTION_PAGINATION_CLICKABLE => true
   ]
 ] );
 ```
