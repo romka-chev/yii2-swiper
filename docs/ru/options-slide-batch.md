@@ -68,3 +68,37 @@ echo Swiper::widget( [
 * Применены групповые опции
 * Автоматически задан `Slide::$options['id']`
 * Автоматически добавлен класс `swiper-slide` в `Slide::$options['class']`
+
+Пример:
+
+```PHP
+<?php
+use romkaChev\yii2\swiper\Swiper;
+use \romkaChev\yii2\swiper\Slide;
+
+echo Swiper::widget( [
+  'items'       => [
+    new Slide([
+      'content' => 'Slide 3', 
+      'options' => [
+        /**
+         * 'id'    не будет задан автоматически
+         * 'class' останется пустым
+         */
+        'href' => '/site/url'
+      ]
+    ])
+  ],
+  /**
+   * В данном примере групповые опции не будут применены к слайду, 
+   * так как он имеет тип '\romkaChev\yii2\swiper\Slide'
+   */
+  'itemOptions' => [
+    'options' => [
+      'tag'   => 'a',
+      'href'  => 'javascript:void(0)',
+      'class' => 'batch-class'
+    ]
+  ]
+] );
+```
