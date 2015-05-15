@@ -133,8 +133,8 @@ class Slide extends Object
 
         }
 
-        $this->options = array_filter( $this->options );
-
+        $this->options         = array_filter( $this->options );
+        $this->options['data'] = array_filter( $this->options['data'] );
     }
 
 }

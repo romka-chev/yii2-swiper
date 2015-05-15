@@ -11,8 +11,7 @@ use yii\helpers\Json;
 use yii\web\JsExpression;
 
 /**
- * A Swiper widget is adapter to javascript Swiper slider;
- * it uses v3.0.3+ version of Swiper.
+ * A Swiper widget is adapter to javascript Swiper slider
  *
  * @link    http://www.idangero.us/swiper/
  *
@@ -40,7 +39,6 @@ class Swiper extends Widget
      *
      * @see \romkaChev\yii2\swiper\Swiper::normalizeOptions
      * @see \romkaChev\yii2\swiper\Swiper::renderItem
-     * @see \romkaChev\yii2\swiper\Swiper::getNormalizedItemOptions
      *
      * @see \romkaChev\yii2\swiper\Slide::$options
      */
@@ -318,9 +316,33 @@ class Swiper extends Widget
 
 
     /**
-     * If you wants to add an item to collection in runtime,
-     * you should use this instead of direct items pushing to collection.
+     * This function is batch-wrapper of \romkaChev\yii2\swiper\Swiper::addItem
      *
+     * @param string[]|mixed[][]|Slide[] $items batch of items
+     *                                          to be added into slider
+     *
+     * @see \romkaChev\yii2\swiper\Swiper::addItem
+     * @see \romkaChev\yii2\swiper\Swiper::$items
+     * @see \romkaChev\yii2\swiper\Slide
+     *
+     * @return Swiper
+     */
+    public function addItems( array $items = [ ] )
+    {
+        foreach ($items as $item) {
+            $this->addItem( $item );
+        }
+
+        return $this;
+    }
+
+    /**
+     * If you wants to add an item to collection in runtime,
+     * you should use this instead of direct items pushing to collection,
+     * because it supports configuring slides from strings and arrays.
+     *
+     * Also it merges [[\romkaChev\yii2\swiper\Swiper::$itemOptions]]
+     * with concrete item options.
      *
      * @param string|mixed[]|Slide $item The content, or configuration,
      *                                   or [[\romkaChev\yii2\swiper\Slide]] itself.
@@ -332,11 +354,7 @@ class Swiper extends Widget
      */
     public function addItem( $item = [ ] )
     {
-        if ($item instanceof Slide) {
-            $this->items[] = $item;
-        } else {
-            $this->items[] = new Slide( $item );
-        }
+        $this->items[] = $this->normalizeItem( $item, count( $this->items ) );
 
         return $this;
     }
@@ -402,7 +420,9 @@ class Swiper extends Widget
 
         //@formatter:off
 
-        $this->itemOptions['class']       = trim(ArrayHelper::getValue($this->itemOptions,       'class', '') . ' swiper-slide', ' ');
+        $this->itemOptions['options']          = ArrayHelper::getValue($this->itemOptions,                  'options', []);
+        $this->itemOptions['options']['data']  = ArrayHelper::getValue($this->itemOptions['options'],       'data', []);
+        $this->itemOptions['options']['class'] = trim(ArrayHelper::getValue($this->itemOptions['options'],  'class', '') . ' swiper-slide', ' ');
 
         $this->containerOptions['id']     = $id;
         $this->containerOptions['class']  = trim(ArrayHelper::getValue($this->containerOptions,  'class', '') . ' swiper-container', ' ');
@@ -463,14 +483,61 @@ class Swiper extends Widget
     /**
      * This function converts non-[[\romkaChev\yii2\swiper\Slide]] items
      * to [[\romkaChev\yii2\swiper\Slide]] respectively
+     *
+     * Then it merges [[\romkaChev\yii2\swiper\Swiper::$itemOptions]] with
+     * concrete item options
+     *
      */
     protected function normalizeItems()
     {
         foreach ($this->items as $index => $item) {
-            if ( ! $item instanceof Slide) {
-                $this->items[$index] = new Slide( $item );
-            }
+            $this->items[$index] = $this->normalizeItem( $item, $index );
         }
+    }
+
+    /**
+     * @param string|mixed[]|Slide $item
+     * @param int                  $index
+     *
+     * @return Slide
+     */
+    protected function normalizeItem( $item, $index )
+    {
+        /**
+         * If concrete \romkaChev\yii2\swiper\Slide given
+         * then it is meant to be fully custom-configured
+         * and it will not be managed there.
+         */
+        if ($item instanceof Slide) {
+            return $item;
+        }
+
+        $item = is_string( $item )
+            ? [ 'content' => $item ]
+            : $item;
+
+        $itemOptions = $this->itemOptions;
+
+        /**
+         * Id must be unique and batch value cannot be applied
+         */
+        ArrayHelper::remove( $itemOptions['options'], 'id' );
+        /**
+         * Hash must be unique too
+         */
+        ArrayHelper::remove( $itemOptions, 'hash' );
+        ArrayHelper::remove( $itemOptions['options']['data'], 'hash' );
+
+        $item['options'] = ArrayHelper::getValue( $item, 'options', [ ] );
+
+        $itemClass                = ArrayHelper::getValue( $item['options'], 'class', '' );
+        $item['options']['id']    = ArrayHelper::getValue( $item['options'], 'id', "{$this->containerOptions['id']}-slide-{$index}" );
+        $item['options']['class'] = trim( ArrayHelper::getValue( $itemOptions['options'], 'class', '' ) . " {$itemClass}", ' ' );
+
+
+        $item = array_replace_recursive( $itemOptions, $item );
+
+        return new Slide( $item );
     }
 
     /**
@@ -707,7 +774,7 @@ class Swiper extends Widget
     {
         $renderedItems = [ ];
         foreach ($items as $index => $item) {
-            $renderedItems[] = $this->renderItem( $item, $index );
+            $renderedItems[] = $this->renderItem( $item );
         }
 
         return implode( PHP_EOL, $renderedItems );
@@ -717,41 +784,18 @@ class Swiper extends Widget
      * This function renders an item
      *
      * @param Slide $slide
-     * @param int   $index numeric index of slide (for id generation)
      *
      * @see \romkaChev\yii2\swiper\Swiper::$items
      * @see \romkaChev\yii2\swiper\Swiper::$itemOptions
-     * @see \romkaChev\yii2\swiper\Swiper::getNormalizedItemOptions
      *
      * @return string
      */
-    protected function renderItem( Slide $slide, $index )
+    protected function renderItem( Slide $slide )
     {
-        $options = $this->getNormalizedItemOptions( $slide, $index );
+        $options = $slide->options;
         $tag     = ArrayHelper::remove( $options, 'tag', 'div' );
 
         return Html::tag( $tag, $slide->content, $options );
-    }
-
-    /**
-     * @param \romkaChev\yii2\swiper\Slide $slide
-     * @param int                          $index numeric index of slide (for id generation)
-     *
-     * @see \romkaChev\yii2\swiper\Swiper::$items
-     * @see \romkaChev\yii2\swiper\Swiper::$itemOptions
-     *
-     * @return mixed[]
-     */
-    protected function getNormalizedItemOptions( Slide $slide, $index )
-    {
-        $itemClass = ArrayHelper::getValue( $slide->options, 'class', '' );
-
-        $slide->options['class'] = trim( ArrayHelper::getValue( $this->itemOptions, 'class', '' ) . " {$itemClass}", ' ' );
-
-        $options       = array_replace_recursive( $this->itemOptions, $slide->options );
-        $options['id'] = ArrayHelper::getValue( $options, 'id', "{$this->containerOptions['id']}-slide-{$index}" );
-
-        return $options;
     }
 
     /**

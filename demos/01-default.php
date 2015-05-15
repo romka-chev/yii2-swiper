@@ -18,7 +18,9 @@ echo Swiper::widget( [
         'Slide 10',
     ],
     'itemOptions' => [
-        'tag'   => 'div',
-        'class' => 'my-slide-class'
+        'options' => [
+            'tag'   => 'div',
+            'class' => 'my-slide-class'
+        ]
     ]
 ] );

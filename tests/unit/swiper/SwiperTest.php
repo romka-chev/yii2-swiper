@@ -2,7 +2,6 @@
 namespace romkaChev\yii2\swiper\tests\unit\swiper;
 
 
-use ReflectionClass;
 use romkaChev\yii2\swiper\Slide;
 use romkaChev\yii2\swiper\Swiper;
 use romkaChev\yii2\swiper\tests\unit\BaseTestCase;
@@ -132,43 +131,24 @@ class SwiperTest extends BaseTestCase
         $swiper->run();
     }
 
-    public function testItemOptions()
+    public function testBatchItemsInjectionViaSpecialMethodSuccessed()
     {
-
         $swiper = new Swiper( [
-            'items'            => [
-                new Slide( [
-                    'content' => 'slide 00',
-                    'options' => [
-                        'class' => 'custom-slide-class00',
-                        'data'  => [
-                            'id' => 'data-id-00'
-                        ]
-                    ]
-                ] ),
-            ],
-            'containerOptions' => [
-                'id' => 'custom-id'
-            ],
-            'itemOptions'      => [
-                'class' => 'custom-batch-class',
-                'data'  => [
-                    'id'   => 'custom-batch-data-id',
-                    'temp' => 'custom-batch-data-temp'
-                ]
+            'items' => [
+                'slide 01',
+                [ 'content' => 'slide 02' ],
+                new Slide( 'slide 03' ),
             ]
         ] );
 
-        $method  = $this->getMethod( 'getNormalizedItemOptions' );
-        $options = $method->invokeArgs( $swiper, [ $swiper->items[0], 0 ] );
+        $swiper->addItems( [
+            'slide 04',
+            [ 'content' => 'slide 05' ],
+            new Slide( 'slide 03' )
+        ] );
 
-        $this->assertEquals( 'custom-id-slide-0', $options['id'] );
-        $this->assertEquals( 'custom-batch-class swiper-slide custom-slide-class00', $options['class'] );
-        $this->assertEquals( 'data-id-00', $options['data']['id'] );
-        $this->assertEquals( 'custom-batch-data-temp', $options['data']['temp'] );
-
+        $swiper->run();
     }
-
     public function testContainerOptions()
     {
         $swiper = new Swiper( [
@@ -462,17 +442,4 @@ class SwiperTest extends BaseTestCase
 
     }
 
-    /**
-     * @param string $name
-     *
-     * @return \ReflectionMethod
-     */
-    protected static function getMethod( $name )
-    {
-        $class  = new ReflectionClass( Swiper::className() );
-        $method = $class->getMethod( $name );
-        $method->setAccessible( true );
-
-        return $method;
-    }
 }
