@@ -823,7 +823,7 @@ JS
         return $this;
     }
 
-    //<editor-fold desc="Aliases for Swiper options">
+    //<editor-fold desc="Named constants for Swiper options">
 
     const OPTION_INITIAL_SLIDE                    = 'initialSlide';
     const OPTION_DIRECTION                        = 'direction';
