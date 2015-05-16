@@ -1,10 +1,9 @@
 # Пагинация
 
-Для подключения в слайдер пагинации необходимо объявить поведение **pagination** в поле **behaviours**, 
-иначе пагинация не будет отрендерена.
+Для подключения в слайдер пагинации необходимо объявить поведение `pagination` в поле `\romkaChev\yii2\swiper\Swiper::$behaviours`, иначе пагинация не будет отрендерена.
 
-> Заметьте: чтобы пагинация была кликабельной, необходимо указать **paginationClickable** = true 
-  в поле **pluginOptions**
+> Заметьте: чтобы пагинация была кликабельной, необходимо указать `paginationClickable = true` 
+  в поле `\romkaChev\yii2\swiper\Swiper::$pluginOptions`
 
 Пример:
 
@@ -44,7 +43,7 @@ echo Swiper::widget( [
 
 ## Настройка пагинации
 
-Настройка управляющего тега пагинации происходит через поле **paginationOptions**. Настройка аналогична **\yii\helpers\BaseHtml::tag**
+Настройка управляющего тега пагинации происходит через поле `\romkaChev\yii2\swiper\Swiper::$paginationOptions`. Настройка аналогична `\yii\helpers\BaseHtml::tag`
 
 Пример:
 
