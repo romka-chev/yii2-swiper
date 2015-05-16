@@ -8,10 +8,10 @@
 | Алиас         | Константа               | Что заменяет                                                      |
 |---------------|-------------------------|-------------------------------------------------------------------|
 | `background`  | `PARALLAX_BACKGROUND`   | `Swiper::$parallaxOptions['style'] = 'background-image:url(...)'` |
-| `transition`  | `PARALLAX_TRANSITION`   | `Swiper::$parallaxOptions['data']['swiper-parallax']`          |
-| `transitionX` | `PARALLAX_TRANSITION_X` | `Swiper::$parallaxOptions['data']['swiper-parallax-x']`        |
-| `transitionY` | `PARALLAX_TRANSITION_Y` | `Swiper::$parallaxOptions['data']['swiper-parallax-y']`        |
-| `duration`    | `PARALLAX_DURATION`     | `Swiper::$parallaxOptions['data']['swiper-duration']`          |
+| `transition`  | `PARALLAX_TRANSITION`   | `Swiper::$parallaxOptions['data']['swiper-parallax']`             |
+| `transitionX` | `PARALLAX_TRANSITION_X` | `Swiper::$parallaxOptions['data']['swiper-parallax-x']`           |
+| `transitionY` | `PARALLAX_TRANSITION_Y` | `Swiper::$parallaxOptions['data']['swiper-parallax-y']`           |
+| `duration`    | `PARALLAX_DURATION`     | `Swiper::$parallaxOptions['data']['swiper-duration']`             |
 
 Пример использования:
 
