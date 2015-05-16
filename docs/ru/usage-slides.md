@@ -2,15 +2,13 @@
 
 ## Построение виджета
 
-При построении виджета все слайды указываются как массив в поле [[\romkaChev\yii2\swiper\Swiper::$items]].
-Если слайд не имеет тип [[\romkaChev\yii2\swiper\Slide]], то виджет попытается привести его к этом типу.
+При построении виджета все слайды указываются как массив в поле `\romkaChev\yii2\swiper\Swiper::$items`.
 
 Пример:
 
 ```PHP
 <?php
 use \romkaChev\yii2\swiper\Swiper;
-use \romkaChev\yii2\swiper\Slide;
 
 Swiper::widget([
     'items'      => [
@@ -24,133 +22,93 @@ Swiper::widget([
           '<h3>Подзаголовок</h3>',
           '<p>Слайд 03</p>'
         ]
-      ],
-      new Slide('Слайд 04'),
-      new Slide([
-        'content' => 'Слайд 05'
-      ]),
-      new Slide([
-        'content' => [
-          '<h1>Заголовок</h1>',
-          '<h3>Подзаголовок</h3>',
-          '<p>Слайд 06</p>'
-        ]
-      ]),
+      ]
     ],
 ]);
 ```
 ## Настройка слайда
 ### Контент
 
-> Заметка: При создании слайда без контента, поле [[\romkaChev\yii2\swiper\Slide::$content]] будет иметь значение [[null]]
-
-Слайды принимают в конструктор несколько типов:
-
-* Строка
-* Массив
-
-```PHP
-<?php
-use \romkaChev\yii2\swiper\Slide;
-
-// Конструктор со строкой
-$slide = new Slide('Слайд 01');
-echo $slide->content; // Слайд 01
-
-// Конструктор с массивом
-$slide = new Slide([
-  'content' => 'Слайд 01'
-]);
-echo $slide->content; // Слайд 01
-
-// Конструктор с массивом строк в контенте
-$slide = new Slide([
-  'content' => [
-    '<h1>Заголовок</h1>',
-    '<h3>Подзаголовок</h3>',
-    '<p>Слайд 01</p>'
-  ]
-]);
-echo $slide->content; // <h1>Заголовок</h1><h3>Подзаголовок</h3><p>Слайд 01</p>
-```
+> Заметка: При создании слайда без контента, поле `\romkaChev\yii2\swiper\Slide::$content` будет иметь значение `null`
 
 ### Короткие алиасы
 
 При создании слайдов есть возможность задавать через алиасы фон и hash-значение в адресной строке.
-Также слайд можно настроить любым образом аналогично настройке [[\yii\helpers\BaseHtml::tag]]
+Также слайд можно настроить любым образом аналогично настройке `\yii\helpers\BaseHtml::tag`
 
 #### Фон
 
 Стандартно фон может быть задан двумя способами:
 
-* Через короткий алиас \romkaChev\yii2\swiper\Slide::BACKGROUND - в данном случае 
+* Через короткий алиас `\romkaChev\yii2\swiper\Slide::BACKGROUND` - в данном случае 
   не нужно указывать свойство background-image, а достаточно только ссылки на изображение
-* Через опцию style напрямую
+* Через опцию `style` html-настроек тега напрямую
 
 Пример:
 
 ```PHP
 <?php
-use \romkaChev\yii2\swiper\Slide;
+use \romkaChev\yii2\swiper\Swiper;
 
-// Короткий алиас
-$slide = new Slide([
-  Slide::BACKGROUND => 'http://placehold.it/350x150'
-]);
-
-// Короткий алиас вручную
-$slide = new Slide([
-  'background' => 'http://placehold.it/350x150'
-]);
-
-// опция style
-$slide = new Slide([
-  'options' => [
-    'style' => 'background-image:url(http://placehold.it/350x150)'
-  ]
+Swiper::widget([
+    'items'      => [
+      // Короткий алиас c использованием константы
+      [
+        Slide::BACKGROUND => 'http://placehold.it/350x150'
+      ],
+      // Короткий алиас вручную
+      [
+        'background' => 'http://placehold.it/350x150'
+      ],
+      // опция style
+      [
+        'options' => [
+          'style' => 'background-image:url(http://placehold.it/350x150)'
+        ]
+      ]
+    ],
 ]);
 ```
-
 #### Hash
 
-Стандартно hash может быть задан двумя способами:
+Стандартно `hash` может быть задан двумя способами:
 
-* Через короткий алиас \romkaChev\yii2\swiper\Slide::HASH
-* Через опцию data['hash'] напрямую
+* Через короткий алиас `\romkaChev\yii2\swiper\Slide::HASH`
+* Через `\romkaChev\yii2\swiper\Slide::$options['data']['hash']` напрямую
 
 Пример:
 
 ```PHP
 <?php
-use \romkaChev\yii2\swiper\Slide;
+use \romkaChev\yii2\swiper\Swiper;
 
-// Короткий алиас
-$slide = new Slide([
-  Slide::HASH => 'slide01'
-]);
-
-// Короткий алиас вручную
-$slide = new Slide([
-  'hash' => 'slide01'
-]);
-
-// опция data['hash']
-$slide = new Slide([
-  'options' => [
-    'data' => [
-      'hash' => 'slide01'
-    ]
-  ]
+Swiper::widget([
+    'items'      => [
+      // Короткий алиас c использованием константы
+      [
+        Slide::HASH => 'slide01'
+      ],
+      // Короткий алиас вручную
+      [
+        'hash' => 'slide01'
+      ],
+      // опция data['hash']
+      [
+        'options' => [
+          'data' => [
+            'hash' => 'slide01'
+          ]
+        ]
+      ]
+    ],
 ]);
 ```
-
 ### Общая настройка
 
-Слайд может быть свободно настроен аналогично [[\yii\helpers\BaseHtml::tag]].
-Все опции, указанные в \romkaChev\yii2\swiper\Slide::$options будут переданы в опции тега.
+Слайд может быть свободно настроен аналогично `[[\yii\helpers\BaseHtml::tag]]`.
+Все опции, указанные в `\romkaChev\yii2\swiper\Slide::$options` будут переданы в опции тега.
 
 Пример:
-
 
 ```PHP
 <?php
@@ -171,6 +129,26 @@ $slide = new Slide([
   ]
 ]);
 
+use \romkaChev\yii2\swiper\Swiper;
+
+Swiper::widget([
+    'items'      => [
+      [
+        'content' => 'Текст слайда',
+        'options' => [
+          'tag'   => 'a',
+          'href'  => '#',
+          'style' => 'color: #fff',
+          'id'    => 'my-slide-id',
+          'class' => 'my-slide-class',
+          'data'  => [
+            'id'   => 'my-slide-id',
+            'hash' => 'my-hash'
+          ]
+        ]
+      ]
+    ],
+]);
 /**
  * При рендеринге этот слайд будет представлен следующим кодом:
  *
@@ -181,4 +159,49 @@ $slide = new Slide([
  *    data-id   = "my-data-slide-id" 
  *    data-hash = "my-hash">Текст слайда</a>
  */
+```
+
+### Настройка объектов `\romkaChev\yii2\swiper\Slide`
+
+При передаче в виджет в качестве слайда экземпляра объекта `\romkaChev\yii2\swiper\Slide`
+**не будет** произведена настройка слайда, так как подразумевается, что он уже полностью настроен.
+
+При этом с ним **не будут** произведены следующие операции: 
+
+* Применены групповые опции
+* Автоматически задан `Slide::$options['id']`
+* Автоматически добавлен класс `swiper-slide` в `Slide::$options['class']`
+
+Пример:
+
+```PHP
+<?php
+use romkaChev\yii2\swiper\Swiper;
+use \romkaChev\yii2\swiper\Slide;
+
+echo Swiper::widget( [
+  'items'       => [
+    new Slide([
+      'content' => 'Slide 3', 
+      'options' => [
+        /**
+         * 'id'    не будет задан автоматически
+         * 'class' останется пустым
+         */
+        'href' => '/site/url'
+      ]
+    ])
+  ],
+  /**
+   * В данном примере групповые опции не будут применены к слайду, 
+   * так как он имеет тип '\romkaChev\yii2\swiper\Slide'
+   */
+  'itemOptions' => [
+    'options' => [
+      'tag'   => 'a',
+      'href'  => 'javascript:void(0)',
+      'class' => 'batch-class'
+    ]
+  ]
+] );
 ```

@@ -1,5 +1,10 @@
 # Документация по yii2-swiper
 
+> В документации, при испозовании `Swiper` и `Slide` без пространств имен, подразумевается,
+  что указаны `\romkaChev\yii2\swiper\Swiper` и `\romkaChev\yii2\swiper\Slide` соответственно
+  
+#### [Обзор виджета](overview.md)
+
 ## Использование
 
 * [Слайды](usage-slides.md)
@@ -18,4 +23,4 @@
 
 * [Групповая настройка слайдов](options-slide-batch.md)
 * [Алиасы](options-aliases.md)
-* **TBD** [Конфликты алиасов и прямых опций](options-ordering.md)
+* [Конфликты алиасов и прямых опций](options-ordering.md)
