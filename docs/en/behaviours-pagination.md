@@ -1,7 +1,7 @@
 # Pagination
 
-To connect these buttons, you must declare behaviour `pagination` in field `\romkaChev\yii2\swiper\Swiper::$behaviours`, 
-otherwise pagination will not be rendered
+To connect these buttons you must declare behaviour `pagination` in field `\romkaChev\yii2\swiper\Swiper::$behaviours`, 
+otherwise pagination will not be rendered.
 
 > Note: to pagination was clickable, you must specify `paginationClickable = true` 
   in field `\romkaChev\yii2\swiper\Swiper::$pluginOptions`
