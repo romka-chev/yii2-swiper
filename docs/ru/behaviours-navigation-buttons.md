@@ -37,7 +37,7 @@ echo Swiper::widget( [
 
 ## Настройка кнопок
 
-Настройка управляющих тегов кнопок происходит через поле `\romkaChev\yii2\swiper\Swiper::$prevButtonOptions` и `\romkaChev\yii2\swiper\Swiper::$nextButtonOptions`. 
+Настройка кнопок происходит через поле `\romkaChev\yii2\swiper\Swiper::$prevButtonOptions` и `\romkaChev\yii2\swiper\Swiper::$nextButtonOptions`. 
 Настройка аналогична `\yii\helpers\BaseHtml::tag`
 
 Пример:

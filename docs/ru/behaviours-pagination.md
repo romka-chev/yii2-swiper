@@ -43,7 +43,7 @@ echo Swiper::widget( [
 
 ## Настройка пагинации
 
-Настройка управляющего тега пагинации происходит через поле `\romkaChev\yii2\swiper\Swiper::$paginationOptions`. Настройка аналогична `\yii\helpers\BaseHtml::tag`
+Настройка пагинации происходит через поле `\romkaChev\yii2\swiper\Swiper::$paginationOptions`. Настройка аналогична `\yii\helpers\BaseHtml::tag`
 
 Пример:
 
