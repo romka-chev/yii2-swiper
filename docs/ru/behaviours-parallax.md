@@ -12,24 +12,24 @@ Swiper позволяет делать галереи с эффектом пар
 настраивать эффекты для каждого слайда или частей слайда придется вручную, 
 чтобы поддержать наибольшую кастомизацию.
 
-Поэтому для слайдов и их контента нужно настраивать опции через, например, **\yii\helpers\BaseHtml::tag**
+Поэтому для слайдов и их контента нужно настраивать опции через, например, `\yii\helpers\BaseHtml::tag`
 
 ## Настройка параллакса
 
-Настройка параллакса произодится через поле **parallaxOptions**, аналогично **\yii\helpers\BaseHtml::tag**
+Настройка параллакса произодится через поле `\romkaChev\yii2\swiper\Swiper::$parallaxOptions`, аналогично `\yii\helpers\BaseHtml::tag`
 
 > Обратите внимание: чтобы параллакс заработал, 
-  необходимо указать **'parallax'** = true в поле **pluginOptions**
+  необходимо указать `parallax = true` в поле `\romkaChev\yii2\swiper\Swiper::$pluginOptions`
 
 Также для упрощения работы были введены следующие константы:
 
-| Константа                     | Значение      | Прямой аналог                                                         |
-|-------------------------------|---------------|-----------------------------------------------------------------------|
-| Swiper::PARALLAX_BACKGROUND   | `background`  | Атрибут `background-image:url(...)` поля `style` в **parallaxOptions**|
-| Swiper::PARALLAX_TRANSITION   | `transition`  | parallaxOptions['data']['transition']                                 |
-| Swiper::PARALLAX_TRANSITION_X | `transitionX` | parallaxOptions['data']['transition-x']                               |
-| Swiper::PARALLAX_TRANSITION_Y | `transitionY` | parallaxOptions['data']['transition-y']                               |
-| Swiper::PARALLAX_DURATION     | `duration`    | parallaxOptions['data']['duration']                                   |
+| Константа                       | Значение      | Прямой аналог                                                         |
+|---------------------------------|---------------|-----------------------------------------------------------------------|
+| `Swiper::PARALLAX_BACKGROUND`   | `background`  | Атрибут `background-image:url(...)` поля `style` в **parallaxOptions**|
+| `Swiper::PARALLAX_TRANSITION`   | `transition`  | parallaxOptions['data']['transition']                                 |
+| `Swiper::PARALLAX_TRANSITION_X` | `transitionX` | parallaxOptions['data']['transition-x']                               |
+| `Swiper::PARALLAX_TRANSITION_Y` | `transitionY` | parallaxOptions['data']['transition-y']                               |
+| `Swiper::PARALLAX_DURATION`     | `duration`    | parallaxOptions['data']['duration']                                   |
 
 
 Пример:
