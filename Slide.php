@@ -7,7 +7,8 @@ use yii\helpers\ArrayHelper;
 
 /**
  * Slide is representation of each slide for Swiper widget.
- * If you want, you can use it directly.
+ * Do not use it directly if you don't really know what
+ * you are doing.
  *
  * @package romkaChev\yii2\swiper
  */
@@ -98,8 +99,7 @@ class Slide extends Object
     }
 
     /**
-     * This function just calls normalization
-     * of options
+     * @inheritdoc
      */
     public function init()
     {

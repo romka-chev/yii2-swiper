@@ -496,6 +496,10 @@ class Swiper extends Widget
     }
 
     /**
+     * This function converts non-[[\romkaChev\yii2\swiper\Slide]] item
+     * to [[\romkaChev\yii2\swiper\Slide]], merging batch options,
+     * automatically sets id and class and so on...
+     *
      * @param string|mixed[]|Slide $item
      * @param int                  $index
      *
@@ -781,8 +785,6 @@ class Swiper extends Widget
     }
 
     /**
-     * This function renders an item
-     *
      * @param Slide $slide
      *
      * @see \romkaChev\yii2\swiper\Swiper::$items
