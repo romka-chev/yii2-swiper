@@ -19,4 +19,4 @@
 
 * [Групповая настройка слайдов](options-slide-batch.md)
 * [Алиасы](options-aliases.md)
-* **TBD** [Конфликты алиасов и прямых опций](options-ordering.md)
+* [Конфликты алиасов и прямых опций](options-ordering.md)
