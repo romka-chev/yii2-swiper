@@ -31,7 +31,7 @@ Swiper::widget([
 
 > Заметка: При создании слайда без контента, поле `\romkaChev\yii2\swiper\Slide::$content` будет иметь значение `null`
 
-### Короткие алиасы
+### Алиасы
 
 При создании слайдов есть возможность задавать через алиасы фон и hash-значение в адресной строке.
 Также слайд можно настроить любым образом аналогично настройке `\yii\helpers\BaseHtml::tag`
@@ -40,8 +40,8 @@ Swiper::widget([
 
 Стандартно фон может быть задан двумя способами:
 
-* Через короткий алиас `\romkaChev\yii2\swiper\Slide::BACKGROUND` - в данном случае 
-  не нужно указывать свойство background-image, а достаточно только ссылки на изображение
+* Через алиас `\romkaChev\yii2\swiper\Slide::BACKGROUND` - в данном случае 
+  не нужно указывать свойство background-image. Достаточно только ссылки на изображение
 * Через опцию `style` html-настроек тега напрямую
 
 Пример:
@@ -52,15 +52,15 @@ use \romkaChev\yii2\swiper\Swiper;
 
 Swiper::widget([
     'items'      => [
-      // Короткий алиас c использованием константы
+      // Алиас c использованием константы
       [
         Slide::BACKGROUND => 'http://placehold.it/350x150'
       ],
-      // Короткий алиас вручную
+      // Алиас вручную
       [
         'background' => 'http://placehold.it/350x150'
       ],
-      // опция style
+      // опция 'style'
       [
         'options' => [
           'style' => 'background-image:url(http://placehold.it/350x150)'
@@ -73,7 +73,7 @@ Swiper::widget([
 
 Стандартно `hash` может быть задан двумя способами:
 
-* Через короткий алиас `\romkaChev\yii2\swiper\Slide::HASH`
+* Через алиас `\romkaChev\yii2\swiper\Slide::HASH`
 * Через `\romkaChev\yii2\swiper\Slide::$options['data']['hash']` напрямую
 
 Пример:
@@ -84,11 +84,11 @@ use \romkaChev\yii2\swiper\Swiper;
 
 Swiper::widget([
     'items'      => [
-      // Короткий алиас c использованием константы
+      // Алиас c использованием константы
       [
         Slide::HASH => 'slide01'
       ],
-      // Короткий алиас вручную
+      // Алиас вручную
       [
         'hash' => 'slide01'
       ],
@@ -112,23 +112,6 @@ Swiper::widget([
 
 ```PHP
 <?php
-use \romkaChev\yii2\swiper\Slide;
-
-$slide = new Slide([
-  'content' => 'Текст слайда',
-  'options' => [
-    'tag'   => 'a',
-    'href'  => '#',
-    'style' => 'color: #fff',
-    'id'    => 'my-slide-id',
-    'class' => 'my-slide-class',
-    'data'  => [
-      'id'   => 'my-slide-id',
-      'hash' => 'my-hash'
-    ]
-  ]
-]);
-
 use \romkaChev\yii2\swiper\Swiper;
 
 Swiper::widget([
