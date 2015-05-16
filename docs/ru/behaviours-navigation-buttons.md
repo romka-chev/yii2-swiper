@@ -1,6 +1,7 @@
 # Кнопки "предыдущий" и "следующий"
 
-Для того, чтобы подключить эти кнопки, необходимо объявить поведения `prevButton` и `nextButton` в поле `\romkaChev\yii2\swiper\Swiper::$behaviours`, иначе кнопки не будут отрендерены.
+Для того, чтобы подключить эти кнопки, необходимо объявить поведения `prevButton` и `nextButton` в поле `\romkaChev\yii2\swiper\Swiper::$behaviours`, 
+иначе кнопки не будут отрендерены.
 
 Пример:
 
@@ -36,7 +37,8 @@ echo Swiper::widget( [
 
 ## Настройка кнопок
 
-Настройка управляющих тегов кнопок происходит через поле `\romkaChev\yii2\swiper\Swiper::$prevButtonOptions` и `\romkaChev\yii2\swiper\Swiper::$nextButtonOptions`. Настройка аналогична `\yii\helpers\BaseHtml::tag`
+Настройка управляющих тегов кнопок происходит через поле `\romkaChev\yii2\swiper\Swiper::$prevButtonOptions` и `\romkaChev\yii2\swiper\Swiper::$nextButtonOptions`. 
+Настройка аналогична `\yii\helpers\BaseHtml::tag`
 
 Пример:
 
