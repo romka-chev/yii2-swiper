@@ -55,8 +55,10 @@ $slide = new Slide([
 echo $slide->options['style']; // color:#fff; background-image(http://placehold.it/500x300)
 ```
 
+---
+
 Также следует учитывать то, что при задании фона прямо в настройках **style**, 
-алиас будет поставлен в конец секции **style**.
+алиас будет добавлен в конец секции **style**.
 
 Пример:
 
