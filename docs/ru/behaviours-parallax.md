@@ -26,10 +26,10 @@ Swiper позволяет делать галереи с эффектом пар
 | Константа                       | Значение      | Прямой аналог                                                     |
 |---------------------------------|---------------|-------------------------------------------------------------------|
 | `Swiper::PARALLAX_BACKGROUND`   | `background`  | `Swiper::$parallaxOptions['style'] = 'background-image:url(...)'` |
-| `Swiper::PARALLAX_TRANSITION`   | `transition`  | `Swiper::$parallaxOptions['data']['swiper-parallax']`                  |
-| `Swiper::PARALLAX_TRANSITION_X` | `transitionX` | `Swiper::$parallaxOptions['data']['swiper-parallax-x']`                |
-| `Swiper::PARALLAX_TRANSITION_Y` | `transitionY` | `Swiper::$parallaxOptions['data']['swiper-parallax-y']`                |
-| `Swiper::PARALLAX_DURATION`     | `duration`    | `Swiper::$parallaxOptions['data']['swiperduration']`                    |
+| `Swiper::PARALLAX_TRANSITION`   | `transition`  | `Swiper::$parallaxOptions['data']['swiper-parallax']`             |
+| `Swiper::PARALLAX_TRANSITION_X` | `transitionX` | `Swiper::$parallaxOptions['data']['swiper-parallax-x']`           |
+| `Swiper::PARALLAX_TRANSITION_Y` | `transitionY` | `Swiper::$parallaxOptions['data']['swiper-parallax-y']`           |
+| `Swiper::PARALLAX_DURATION`     | `duration`    | `Swiper::$parallaxOptions['data']['swiper-duration']`             |
 
 
 Пример:
