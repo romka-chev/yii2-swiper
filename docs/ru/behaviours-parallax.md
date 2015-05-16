@@ -23,13 +23,13 @@ Swiper позволяет делать галереи с эффектом пар
 
 Также для упрощения работы были введены следующие константы:
 
-| Константа                       | Значение      | Прямой аналог                                                         |
-|---------------------------------|---------------|-----------------------------------------------------------------------|
-| `Swiper::PARALLAX_BACKGROUND`   | `background`  | Атрибут `background-image:url(...)` поля `style` в **parallaxOptions**|
-| `Swiper::PARALLAX_TRANSITION`   | `transition`  | parallaxOptions['data']['transition']                                 |
-| `Swiper::PARALLAX_TRANSITION_X` | `transitionX` | parallaxOptions['data']['transition-x']                               |
-| `Swiper::PARALLAX_TRANSITION_Y` | `transitionY` | parallaxOptions['data']['transition-y']                               |
-| `Swiper::PARALLAX_DURATION`     | `duration`    | parallaxOptions['data']['duration']                                   |
+| Константа                       | Значение      | Прямой аналог                                                   |
+|---------------------------------|---------------|-----------------------------------------------------------------|
+| `Swiper::PARALLAX_BACKGROUND`   | `background`  | `Swiper::$parallaxOptions['style'] = background-image:url(...)` |
+| `Swiper::PARALLAX_TRANSITION`   | `transition`  | `Swiper::$parallaxOptions['data']['transition']`                |
+| `Swiper::PARALLAX_TRANSITION_X` | `transitionX` | `Swiper::$parallaxOptions['data']['transition-x']`              |
+| `Swiper::PARALLAX_TRANSITION_Y` | `transitionY` | `Swiper::$parallaxOptions['data']['transition-y']`              |
+| `Swiper::PARALLAX_DURATION`     | `duration`    | `Swiper::$parallaxOptions['data']['duration']`                  |
 
 
 Пример:
