@@ -12,7 +12,7 @@ use \romkaChev\yii2\swiper\Swiper;
 
 Swiper::widget([
     'items'      => [
-      'Слайд 01',
+      'Slide 01',
       [
         'content' => 'Slide 02'
       ],
