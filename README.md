@@ -1,6 +1,6 @@
 # Yii2-swiper ![Coverage 100%](https://img.shields.io/badge/coverage-100%25-green.svg?style=flat) ![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)
 
-Yii2 extension for Swiper slider. See more here: [https://github.com/nolimits4web/Swiper/](https://github.com/nolimits4web/Swiper).
+Yii2 widget for Swiper slider. See more here: [https://github.com/nolimits4web/Swiper/](https://github.com/nolimits4web/Swiper).
 
 You can find examples in [demos](demos) folder.
 
