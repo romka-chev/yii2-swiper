@@ -64,6 +64,6 @@ echo Swiper::widget( [
 
 ## Issues
 
-If some problems occurred, you can create [issue](issues).
+If some problems occurred, you can create [issue](https://github.com/romka-chev/yii2-swiper/issues).
 
 Thank you for attention.
