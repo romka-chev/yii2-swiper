@@ -51,7 +51,7 @@ When inheriting options, the following priorities:
 
 > **Please note**, aliases of batch options have a higher priority than the direct options of a particular slide.
 
-| Опции                               | Приоритет        |
+| Options                             | Priority         |
 | ----------------------------------- | ---------------- |
 | Aliases of concrete slide           | 1 - maximal      |
 | Batch aliases                       | 2                |
