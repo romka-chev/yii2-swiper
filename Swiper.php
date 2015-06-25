@@ -903,8 +903,8 @@ JS
     const OPTION_KEYBOARD_CONTROL                 = 'keyboardControl';
     const OPTION_MOUSEWHEEL_CONTROL               = 'mousewheelControl';
     const OPTION_MOUSEWHEEL_FORCE_TO_AXIS         = 'mousewheelForceToAxis';
-    const OPTION_MOUSEWHEEL_RELEASE_ON_EDGES = 'mousewheelReleaseOnEdges';
-    const OPTION_MOUSEWHEEL_INVERT           = 'mousewheelInvert';
+    const OPTION_MOUSEWHEEL_RELEASE_ON_EDGES      = 'mousewheelReleaseOnEdges';
+    const OPTION_MOUSEWHEEL_INVERT                = 'mousewheelInvert';
     const OPTION_HASHNAV                          = 'hashnav';
     const OPTION_PRELOAD_IMAGES                   = 'preloadImages';
     const OPTION_UPDATE_ON_IMAGES_READY           = 'updateOnImagesReady';
