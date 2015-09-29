@@ -74,7 +74,7 @@ echo Swiper::widget( [
     'background' => 'http://placehold.it/2536x1080',
     'transition' => '-23%',
     'data' => [
-      'duration' => '750' // Указываем свойсво напрямую, в обход алиасов
+      'duration' => '750' // Указываем свойство напрямую, в обход алиасов
     ]
   ],
   'pluginOptions' => [
