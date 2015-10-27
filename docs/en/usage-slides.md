@@ -149,7 +149,7 @@ Swiper::widget([
 When transferring to the widget as slide object instance of `\romkaChev\yii2\swiper\Slide`
 **will not** be produced setting the slide, since it implies that it is already fully configured.
 
-At the same time with him **will not** be made as follows:
+At the same time with it **will not** be made as follows:
 
 * Apply batch options
 * Automatically set `Slide::$options['id']`
@@ -159,7 +159,7 @@ Example:
 
 ```PHP
 <?php
-use romkaChev\yii2\swiper\Swiper;
+use \romkaChev\yii2\swiper\Swiper;
 use \romkaChev\yii2\swiper\Slide;
 
 echo Swiper::widget( [
